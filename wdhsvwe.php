@@ -13,7 +13,7 @@ Change log:
 
 		* Initial release.
 		
-Installation: Upload the folder wdhsvwe from the zip file to "wp-content/plugins/" and activate the plugin in your wp-admin panel or upload wdhsvwe.zip in the "Add new" area.
+Installation: Upload the folder synoptic-web-designer-best-design-tool from the zip file to "wp-content/plugins/" and activate the plugin in your wp-admin panel or upload synoptic-web-designer-best-design-tool.zip in the "Add new" area.
  */
 
     include_once 'svwe-config.php';

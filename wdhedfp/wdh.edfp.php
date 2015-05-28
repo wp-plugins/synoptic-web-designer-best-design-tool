@@ -114,7 +114,7 @@ if (!class_exists("WdhEditFieldDb")) {
             }
 
             if (!defined('WDHSVWE_URL')) {
-                define('WDHSVWE_URL', WP_PLUGIN_URL.'/wdhsvwe/');
+                define('WDHSVWE_URL', WP_PLUGIN_URL.'/synoptic-web-designer-best-design-tool/');
             }
             
             $wdhFIELD['WDH_WEBSITE_URL'] = WDHSVWE_URL.'wdhedfp/';

@@ -380,11 +380,11 @@ if (!class_exists("wdhSVWE")) {
             
             // Paths
             if (!defined('WDHSVWE_Path')) {
-                define('WDHSVWE_Path', ABSPATH.'wp-content/plugins/wdhsvwe/');
+                define('WDHSVWE_Path', ABSPATH.'wp-content/plugins/synoptic-web-designer-best-design-tool/');
             }
 
             if (!defined('WDHSVWE_URL')) {
-                define('WDHSVWE_URL', WP_PLUGIN_URL.'/wdhsvwe/');
+                define('WDHSVWE_URL', WP_PLUGIN_URL.'/synoptic-web-designer-best-design-tool/');
             }
 
             // Tables
