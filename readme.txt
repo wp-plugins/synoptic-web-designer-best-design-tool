@@ -70,7 +70,7 @@ If need support or a new feature just go on [support](http://wordpress.org/suppo
 
 == Installation ==
 
-All you have to do is to go in Wordpress admin area -> Plugins section and upload **wdhsvwe.zip** in the "Add new" section.
+All you have to do is to go in Wordpress admin area -> Plugins section and upload **synoptic-web-designer-best-design-tool.zip** in the "Add new" section.
 
 == Upgrade Notice ==
 To upgrade our plugin you must go in Wordpress Admin area - > Dashboard -> Updates -> Check Synoptic Visual Form Builder ( in Plugins section ) and click on the Update Plugins
