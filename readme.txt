@@ -28,7 +28,7 @@ How to change your Woocommerce pages design with Synoptic Web Designer ?
 
 
 
-If need support or a new feature just go on [support](http://wordpress.org/support/plugin/synoptic-web-designer) and write us.
+If need support or a new feature just go on [support](http://wordpress.org/support/plugin/synoptic-web-designer-best-design-tool) and write us.
 
 = Features =
 
