@@ -77,7 +77,7 @@ To upgrade our plugin you must go in Wordpress Admin area - > Dashboard -> Updat
 
 == Frequently Asked Questions ==
 
-If you have any question [click here](http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool-light/) and read our documentation.If you still don't found an answer just go on [support](http://wordpress.org/support/plugin/synoptic-web-designer) and ask us.
+If you have any question [click here](http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool-light/) and read our documentation.If you still don't found an answer just go on [support](http://wordpress.org/support/plugin/synoptic-web-designer-best-design-tool) and ask us.
 
 == Screenshots ==
 
