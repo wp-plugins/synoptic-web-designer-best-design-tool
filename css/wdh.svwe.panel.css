@@ -1,0 +1,528 @@
+/* -------------------------------------------------------------------
+ * Project Name: WDH - Panel JSON
+ * Project Version: 1.0
+ * Project URL: http://www.wdh.im/projects/panel-json/
+ * Author: WDH - Web Developers House
+ * Author URL: http://www.wdh.im/
+ * File: css/svwe.panel.css
+ * File Description: Panel JSON File
+ * File Version: 1.0
+ * Last Update File : 22.09.2014
+ * ------------------------------------------------------------------- 
+ */
+
+/* Panel */
+
+.wdh-panel{
+    position:fixed;
+    right:10px !important;
+    bottom:-2001px;
+    width: 300px;
+    border-bottom: 1px solid #fccf1b;
+    z-index: 9999;
+    box-sizing: content-box;
+}
+
+.wdh-move{
+    left:10px;
+}
+
+.wdh-panel .wdh-panel-top{
+    float:left;
+    width: 100%;
+    margin:0px;
+    padding:0px;
+    border-bottom:2px solid #fccf1b;
+}
+
+.wdh-display-none{
+    display:none;
+}
+
+.wdh-display-block{
+    display:block;
+}
+
+.wdh-panel .wdh-panel-top .wdh-panel-top-setting{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:92px;
+    height:23px;
+    background-color:#313131;
+    color:#9a9a9a;
+    font-family:'Open Sans';
+    font-size:12px;
+    line-height:23px;
+    text-align:center;
+    border-right:1px solid #808080;
+    margin-top: 12px;
+    cursor:pointer;
+}
+
+.wdh-panel .wdh-panel-top .wdh-panel-top-setting:hover{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:92px;
+    height:35px;
+    background-color:#fcd537;
+    color:#000;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:35px;
+    text-align:center;
+    border:none;
+    cursor:pointer;
+}
+
+.wdh-panel .wdh-panel-top .setting-selected{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:92px;
+    height:35px;
+    background-color:#fccf1b;
+    color:#000;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:35px;
+    text-align:center;
+    border:none;
+    cursor:pointer;
+}
+
+.wdh-panel .wdh-panel-top .wdh-left-right{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:25px;
+    height:23px;
+    background:#313131 url("../images/sprite.png");
+    background-position: 39px -155px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.wdh-panel .wdh-panel-top .wdh-left-right:hover{
+    background-color:#000;
+    background-position: 64px -155px;
+}
+
+.wdh-panel .wdh-panel-top .wdh-set-general-settings{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:25px;
+    height:23px;
+    background:#313131 url("../images/sprite.png");
+    background-position: 40px -285px;
+    border-left: 1px solid #808080;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.wdh-panel .wdh-panel-top .wdh-set-general-settings:hover{
+    background-color:#000;
+    background-position: 63px -285px;
+    border-left: 1px solid #808080;
+}
+
+.wdh-panel .wdh-panel-top .wdh-set-advanced-settings{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:25px;
+    height:23px;
+    background:#313131 url("../images/sprite.png");
+    background-position: 40px -312px;
+    border-left: 1px solid #808080;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.wdh-panel .wdh-panel-top .wdh-set-advanced-settings:hover{
+    background-color:#000;
+    background-position: 63px -312px;
+    border-left: 1px solid #808080;
+}
+
+.wdh-panel .wdh-panel-top .wdh-panel-top-x{
+    float:right;
+    margin:0px;
+    padding:0px;
+    width:27px;
+    background-color:#fccf1b;
+    color:#000;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:23px;
+    text-align:center;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.wdh-panel .wdh-panel-middle{
+    float:left;
+    width:92%;
+    margin:0px;
+    padding:0px;
+    padding-left:12px;
+    padding-right:12px;
+    background-color:#f7f7f7;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    height:250px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-types{
+    float:left;
+    width:92%;
+    margin:0px;
+    padding:0px;
+    padding-top:8px;
+    padding-left:18px;
+    padding-bottom:8px;
+    border-bottom:1px solid #fccf1b;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-types .wdh-elemnt-type{
+    float:left;
+    margin:0px;
+    padding:0px;
+    padding-right:7px;
+    color:#989898;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:14px;
+    cursor:pointer;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-types .element-type-selected{
+    float:left;
+    margin:0px;
+    padding:0px;
+    padding-right:7px;
+    color:#000;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:14px;
+    border-left:none;
+    cursor:pointer;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-search-properties{
+    float:left;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    padding-top:6px;
+    padding-bottom:2px;
+    border-bottom:1px solid #fccf1b;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-search-properties .wdh-search-input{
+    float:left;
+    width:95%;
+    height:25px;
+    margin:0px;
+    padding:0px;
+    border:1px solid #fccf1b;
+    background-color:#f8dc6b;
+    color:#d3ab0b;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:25px;
+    padding-left:10px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-search-properties .wdh-search-input::-webkit-input-placeholder,
+.wdh-panel .wdh-panel-middle .wdh-search-properties .wdh-search-input:-moz-placeholder,
+.wdh-panel .wdh-panel-middle .wdh-search-properties .wdh-search-input::-moz-placeholder,
+.wdh-panel .wdh-panel-middle .wdh-search-properties .wdh-search-input:-ms-input-placeholder{
+    color: #cda400;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-options{
+    float:left;
+    width:100%;
+    margin:0px;
+    padding:0px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-box-options{
+    display:none;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-options .wdh-option1{
+    float:left;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    padding-bottom:8px;
+    border-bottom:2px solid #f1f0f0;
+    padding-left:4px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-options .wdh-option1 .wdh-label1{
+    float:left;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    padding-top:8px;
+    color:#151618;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:23px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-options .wdh-option1 .wdh-input{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}    
+
+.wdh-panel .wdh-panel-middle .wdh-options .wdh-option1 .wdh-input .wdh-input1{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:167px;
+    height:20px;
+    border:1px solid #fccf1b;
+    background-color:#f8dc6b;
+}      
+    
+.wdh-panel .wdh-panel-middle .wdh-options .wdh-option1 .wdh-input .wdh-input2{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:40px;
+    height:22px;
+    background-color:#151618;
+    color:#fff;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:22px;
+    text-align:center;
+    cursor:pointer;
+    border:none;
+} 
+
+.wdh-panel .wdh-panel-middle .wdh-options .wdh-option2{
+    float:left;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    padding-bottom:8px;
+    border-bottom:2px solid #f1f0f0;
+    padding-left:4px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-options .wdh-option2 .wdh-label1{
+    float:left;
+    width:65px;
+    margin:0px;
+    padding:0px;
+    padding-top:8px;
+    color:#151618;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:23px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-options .wdh-option2 .wdh-input-field{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:130px;
+    padding-left:15px;
+    padding-top:10px;
+}    
+
+.wdh-panel .wdh-panel-middle .wdh-options .wdh-option2 .wdh-input .wdh-input1{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:87px;
+    height:20px;
+    border:1px solid #fccf1b;
+    background-color:#f8dc6b;
+}      
+    
+.wdh-panel .wdh-panel-middle .wdh-options .wdh-option2 .wdh-input .wdh-input2{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:40px;
+    height:22px;
+    background-color:#151618;
+    color:#fff;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:22px;
+    text-align:center;
+    cursor:pointer;
+    border:none;
+}
+
+ /* Settings */
+ .wdh-panel .wdh-panel-middle .wdh-settings{
+    float:left;
+    width:100%;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+ }
+
+ .wdh-panel .wdh-panel-middle .wdh-settings .wdh-settings-loader{
+    width:100%;
+    height: 180px;
+    background:url('../images/wdh_loader.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    float:left;
+}
+
+ .wdh-panel .wdh-panel-middle .wdh-settings .wdh-settings-loader span{
+    width:100%;
+    float:left;
+    text-align: center;
+    padding-top: 65px;
+}
+
+ .wdh-panel .wdh-panel-middle .wdh-settings li{
+    float:left;
+    width:100%;
+    list-style: none;
+ }
+ 
+ .wdh-panel .wdh-panel-middle .wdh-settings li label{
+    float:left;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    padding-top:8px;
+    color:#151618;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:23px;
+    font-weight: normal !important;
+ }
+ 
+ 
+ 
+ .wdh-panel .wdh-panel-middle .wdh-settings li label.wdh-label-left{
+    float:left;
+    width:40%;
+    margin:0px;
+    padding:0px;
+    padding-top:8px;
+    color:#151618;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:23px;
+ }
+ 
+ .wdh-panel .wdh-panel-middle .wdh-settings li .wdh-input-field{
+    float:left;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    padding-top:8px;
+    color:#151618;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:23px;
+ }
+ 
+.wdh-panel .wdh-panel-middle .wdh-settings li .wdh-input-field .wdh-field .wdh-select,
+.wdh-panel .wdh-panel-middle .wdh-settings li .wdh-input-field .wdh-field .wdh-input{
+    width:100px;
+}
+ 
+.wdh-panel .wdh-panel-middle .wdh-settings li .wdh-input-field .wdh-field .wdh-slider{
+     width: 70px;
+}
+ 
+.wdh-panel .wdh-panel-middle .wdh-settings li .wdh-input-field .wdh-field .wdh-slider-value{
+    width: 30px;
+    float: left;
+    background-color: #f8dc6b;
+    border: 1px solid #fccf1b;
+    font-size: 12px;
+    color: #000;
+    height: 22px;
+}
+ 
+.wdh-panel .wdh-panel-middle .wdh-settings li .wdh-input-field.wdh-input-left{
+    float:left;
+    width:60%;
+    margin:0px;
+    padding:0px;
+    padding-top:8px;
+    color:#151618;
+    font-family:'Open Sans';
+    font-size:14px;
+    line-height:23px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-settings li .wdh-input-field .wdh-tooltip{
+    float:right;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-settings li .wdh-input-field .wdh-tooltip .wdh-information{
+    left: inherit;
+    right: 24px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-advanced-settings{
+    float:left;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    padding-bottom:10px;
+    margin-top:10px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-advanced-settings .wdh-column{
+    float:left;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    display:none;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-advanced-settings .wdh-advanced-text{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:197px;
+    color:#d7d7d7;
+    font-family:'Open Sans';
+    font-size:12px;
+    line-height:23px;
+    text-align:center;
+    background-color:#2a2929;
+    border-top:1px solid #7c7b7b;
+    border-bottom:1px solid #a5a5a5;
+    border-right:1px solid #595959;
+    cursor:pointer;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-advanced-settings .wdh-advanced-box{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:19px;
+    height: 23px;
+    color:#ffea98;
+    font-family:'Open Sans';
+    font-size:18px;
+    line-height:23px;
+    text-align:center;
+    background-color:#2a2929;
+    border-bottom:1px solid #6a6969;
+    border-top:1px solid #414040;
+    cursor:pointer;
+ }

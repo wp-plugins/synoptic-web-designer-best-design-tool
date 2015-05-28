@@ -1,0 +1,212 @@
+/* -------------------------------------------------------------------
+ * Project Name: WDH - Popup JSON
+ * Project Version: 1.0
+ * Project URL: http://www.wdh.im/projects/popup-json/
+ * Author: WDH - Web Developers House
+ * Author URL: http://www.wdh.im/
+ * File: css/svwe.popup.css
+ * File Description: Popup JSON File
+ * File Version: 1.0
+ * Last Update File : 22.09.2014
+ * ------------------------------------------------------------------- 
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,600,800);
+
+/* Popup */
+
+.wdh-popup-body-bg{
+    position:fixed;
+    left:0px;
+    top:0px;
+    background:url("../images/wdh-popup-images.png");
+    z-index: 9999;
+}
+
+.wdh-popup-action{
+    position:fixed;
+    top:50%;
+    left:50%;
+    margin-top:-100px;
+    margin-left:-213px;
+    width:405px;
+    z-index: 9999;
+    background-color:#fff;
+    border:5px solid #fccf1b;
+    border-top-left-radius:7px;
+    border-bottom-left-radius:7px;
+    border-bottom-right-radius:7px;
+}
+
+.wdh-popup-action .wdh-popup-action-content{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:100%;
+    min-height: 100px;
+    box-sizing: content-box;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-exit-element{
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    width: 19px;
+    height: 27px;
+    background-color: #fccf1b;
+    color: #000;
+    font-family: 'Open Sans';
+    font-size: 12px;
+    line-height: 19px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom-left-radius: 27px;
+    padding-left: 7px;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-message{
+    margin: 0px;
+    width: 90%;
+    color: #353535;
+    font-family: 'Open Sans';
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    padding: 5%;
+    padding-bottom: 0px;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-fields{
+    margin: 0 auto;
+    width: 99%;
+    color: #353535;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+    padding: 5%;
+    float: left;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-fields .wdh-popup-field{
+    width:100%;
+    float:left;
+    margin-top: 20px;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-fields .wdh-popup-field.wdh-down{
+    margin-bottom: 20px;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-fields .wdh-popup-field .wdh-popup-field-label{
+    width:100%;
+    float:left;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-fields .wdh-popup-field .wdh-popup-field-label.wdh-popup-field-label-left{
+    width:45%;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-fields .wdh-popup-field .wdh-popup-field-label.wdh-popup-field-label-top{
+    width:100%;
+    font-weight: normal;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-fields .wdh-popup-field .wdh-popup-field-input{
+    width:100%;
+    float:left;
+    background-color: #f8dc6b;
+    border: 1px solid #fccf1b;
+    font-size: 12px;
+    padding-left: 7px;
+    color: #000;
+    height: 22px;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-fields .wdh-popup-field .wdh-popup-field-input.wdh-popup-field-input-left{
+    width:45%;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-fields .wdh-popup-field .wdh-popup-field-input.wdh-popup-field-input-top{
+    width:91%;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-action-buttons{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:100%;
+    padding-left:18px;
+    padding-bottom:20px;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-action-buttons .wdh-popup-action-btn{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:175px;
+    height:43px;
+    background-color:#000;
+    color:#fff;
+    font-family:'Open Sans';
+    font-size:24px;
+    line-height:43px;
+    text-align:center;
+    cursor:pointer;
+    border-radius:5px;
+    box-shadow: -2px 3px 0px 1px #222222;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-action-buttons .wdh-popup-action-btn:hover{
+    margin-left:-2px;
+    margin-bottom:-3px;
+    box-shadow: inherit;
+    background-color:#131313;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-action-buttons .wdh-popup-btn-selected{
+    float:left;
+    margin:0px;
+    padding:0px;
+    width:175px;
+    height:43px;
+    background-color:#fccf1b;
+    color:#000;
+    font-family:'Open Sans';
+    font-size:24px;
+    line-height:43px;
+    text-align:center;
+    margin-right:10px;
+    margin-left: 5px;
+    cursor:pointer;
+    border-radius:5px;
+    box-shadow: -2px 3px 0px 1px #e4bc1d;
+    -webkit-translation: all 0.6s;
+}
+
+.wdh-popup-action .wdh-popup-action-content .wdh-popup-action-buttons .wdh-popup-btn-selected:hover{
+    margin-left:3px;
+    margin-bottom:-3px;
+    box-shadow: inherit;
+    background-color:#fdcd0b;
+}
+
+.wdhpopup-loader{
+   width:86px;
+   height: 20px;
+   background:url('../images/wdh_loader.gif');
+   background-position: center;
+   background-repeat: no-repeat;
+   margin: 20px auto;
+   display:none;
+}
+
+.wdh-mesage-succesful{
+    position:fixed;
+   left:48%;
+   top:44%;
+   font-family:'Open Sans';
+   font-size:28px;
+   line-height:23px;
+   color:#444;
+}
