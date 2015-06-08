@@ -1,0 +1,1593 @@
+/* -------------------------------------------------------------------
+ * Project Name: Synoptic Web Designer: best WordPress design tool Light
+ * Project Version: 1.0
+ * Project URL: http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool-light/
+ * Author: WDH - Web Developers House
+ * Author URL: http://www.wdh.im/
+ * File: css/svwe.css
+ * File Description: CSS File
+ * File Version: 1.0
+ * Last Update File : 22.09.2014
+ * ------------------------------------------------------------------- 
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,600,800);
+
+
+/* Reset wdh tags */
+wdhdiv, wdhspan{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+    box-sizing: content-box;
+}
+
+wdhdiv{
+    position: relative;
+}
+
+/* Editor */
+
+
+/*
+ * Right Menu
+ * -----------------------------------------------------------------------------
+ */
+.wdh-logo{
+    width:59px;
+    height: 59px;
+    background: url('../images/logo_off.png');
+    position:fixed;
+    top:50px;
+    right:20px;
+    cursor:pointer;
+    z-index:9999;
+}
+
+.wdh-logo:hover{
+    background: url('../images/logo.png');
+}
+
+.wdh-logo.selected{
+    background: url('../images/logo.png');
+    cursor: auto;
+}
+
+/* Publish */
+
+.wdh-publish{
+    width:28px;
+    height: 28px;
+    background: #2a2929 url('../images/sprite.png') 40px 114px;
+    border-radius: 28px;
+    position:fixed;
+    top: -28px;
+    right: -28px;
+    cursor:pointer;
+    z-index:9999;
+}
+
+.wdh-publish:hover{
+    background: #000000 url('../images/sprite.png') 68px 114px;
+}
+
+.wdh-publish.wdh-disabled,
+.wdh-publish.wdh-disabled:hover{
+    background-color: #6b6b6b;
+    cursor:initial;
+}
+
+/* Publish Info */
+.wdh-publish-info{
+    width: 96px;
+    height: 41px;
+    top:40px;
+    right:131px;
+    position:fixed;
+    display:none;
+    z-index:9999;
+}
+
+.wdh-publish-info .wdh-arrow{
+    width:8px;
+    height: 23px;
+    background: url('../images/right-arrow.png');
+    background-repeat: no-repeat;
+    float:right;
+    margin-top: 3px;
+    z-index:9999;
+}
+
+.wdh-publish-info .wdh-info-content{
+    width: 76px;
+    min-height: 30px;
+    background: #000;
+    padding: 6px;
+    padding-bottom: 2px;
+    float:left;
+    z-index:9999;
+}
+
+.wdh-publish-info .wdh-info-content .wdh-info-content-text{
+    width: 100%;
+    float:left;
+    color: #fccf1b;
+    border-bottom: 2px solid #fccf1b;
+    padding-bottom: 6px;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    z-index:9999;
+}
+
+/* Roll Back */
+
+.wdh-roll-back{
+    width:28px;
+    height: 28px;
+    background: #2a2929 url('../images/sprite.png') 42px -52px;
+    border-radius: 28px;
+    position:fixed;
+    top: -28px;
+    right: -28px;
+    cursor:pointer;
+    z-index:9999;
+}
+
+.wdh-roll-back:hover{
+    background: #000000 url('../images/sprite.png') 66px -52px;
+}
+
+/* Roll Back Info */
+.wdh-roll-back-info{
+    width: 96px;
+    height: 41px;
+    top: 73px;
+    right: 130px;
+    position:fixed;
+    display:none;
+    z-index:9999;
+}
+
+.wdh-roll-back-info .wdh-arrow{
+    width:8px;
+    height: 23px;
+    background: url('../images/right-arrow.png');
+    background-repeat: no-repeat;
+    float:right;
+    margin-top: 3px;
+    z-index:9999;
+}
+
+.wdh-roll-back-info .wdh-info-content{
+    width: 76px;
+    min-height: 30px;
+    background: #000;
+    padding: 6px;
+    padding-bottom: 2px;
+    float:left;
+    z-index:9999;
+}
+
+.wdh-roll-back-info .wdh-info-content .wdh-info-content-text{
+    width: 100%;
+    float:left;
+    color: #fccf1b;
+    border-bottom: 2px solid #fccf1b;
+    padding-bottom: 6px;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    z-index:9999;
+}
+
+/* Switch */
+
+.wdh-switch{
+    width:28px;
+    height: 28px;
+    background: #2a2929 url('../images/sprite.png') 41px -153px;
+    border-radius: 28px;
+    position:fixed;
+    top:-28px;
+    right:-28px;
+    cursor:pointer;
+    z-index:9999;
+}
+
+.wdh-switch:hover{
+    background: #000000 url('../images/sprite.png') 66px -153px;
+}
+
+/* Switch Info */
+.wdh-switch-info{
+    width: 96px;
+    height: 41px;
+    top:100px;
+    right:119px;
+    position:fixed;
+    display:none;
+    z-index:9999;
+}
+
+.wdh-switch-info .wdh-arrow{
+    width:8px;
+    height: 23px;
+    background: url('../images/right-arrow.png');
+    background-repeat: no-repeat;
+    float:right;
+    margin-top: 3px;
+    z-index:9999;
+}
+
+.wdh-switch-info .wdh-info-content{
+    width: 76px;
+    min-height: 30px;
+    background: #000;
+    padding: 6px;
+    padding-bottom: 2px;
+    float:left;
+    z-index:9999;
+}
+
+.wdh-switch-info .wdh-info-content .wdh-info-content-text{
+    width: 100%;
+    float:left;
+    color: #fccf1b;
+    border-bottom: 2px solid #fccf1b;
+    padding-bottom: 6px;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    z-index:9999;
+}
+
+
+/* Resolution */
+
+.wdh-resolution{
+    width:28px;
+    height: 28px;
+    background: #2a2929 url('../images/sprite.png') 41px -77px;
+    border-radius: 28px;
+    position:fixed;
+    top:-28px;
+    right:-28px;
+    cursor:pointer;
+    z-index:9999;
+}
+
+.wdh-resolution:hover{
+    background: #000000 url('../images/sprite.png') 66px -77px;
+}
+
+/* Resolution Info */
+.wdh-resolution-info{
+    width: 96px;
+    height: 41px;
+    top:126px;
+    right:100px;
+    position:fixed;
+    display:none;
+    z-index:9999;
+}
+
+.wdh-resolution-info .wdh-arrow{
+    width:8px;
+    height: 23px;
+    background: url('../images/right-arrow.png');
+    background-repeat: no-repeat;
+    float:right;
+    margin-top: 3px;
+    z-index:9999;
+}
+
+.wdh-resolution-info .wdh-info-content{
+    width: 76px;
+    min-height: 30px;
+    background: #000;
+    padding: 6px;
+    padding-bottom: 2px;
+    float:left;
+    z-index:9999;
+}
+
+.wdh-resolution-info .wdh-info-content .wdh-info-content-text{
+    width: 100%;
+    float:left;
+    color: #fccf1b;
+    border-bottom: 2px solid #fccf1b;
+    padding-bottom: 6px;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    z-index:9999;
+}
+
+
+/* Show/Hide Hidden Elements */
+
+.wdh-show-hide{
+    width:28px;
+    height: 28px;
+    background: #2a2929 url('../images/sprite.png') 40px 91px;
+    border-radius: 28px;
+    position:fixed;
+    top:-28px;
+    right:-28px;
+    cursor:pointer;
+    z-index:9999;
+}
+
+.wdh-show-hide:hover{
+    background: #000000 url('../images/sprite.png') -12px 91px;
+}
+
+/* Show/Hide Hidden Elements Info */
+.wdh-show-hide-info{
+    width: 71px;
+    height: 41px;
+    top:164px;
+    right:47px;
+    position:fixed;
+    display:none;
+    z-index:9999;
+}
+
+.wdh-show-hide-info .wdh-arrow{
+    width:19px;
+    height: 9px;
+    background: url('../images/top-arrow.png');
+    background-repeat: no-repeat;
+    float:right;
+    z-index:9999;
+}
+
+.wdh-show-hide-info .wdh-info-content{
+    width: 76px;
+    min-height: 30px;
+    background: #000;
+    padding: 6px;
+    padding-bottom: 2px;
+    float:left;
+    z-index:9999;
+}
+
+.wdh-show-hide-info .wdh-info-content .wdh-info-content-text{
+    width: 100%;
+    float:left;
+    color: #fccf1b;
+    border-bottom: 2px solid #fccf1b;
+    padding-bottom: 6px;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    z-index:9999;
+}
+
+/* Role */
+
+.wdh-role{
+    width:28px;
+    height: 28px;
+    background: #2a2929 url('../images/sprite.png') 39px -179px;
+    border-radius: 28px;
+    position:fixed;
+    top:-28px;
+    right:-28px;
+    cursor:pointer;
+    z-index:9999;
+}
+
+.wdh-role:hover{
+    background: #000000 url('../images/sprite.png') 66px -179px;
+}
+
+/* Role Info */
+.wdh-role-info{
+    width: 71px;
+    height: 41px;
+    top:166px;
+    right:14px;
+    position:fixed;
+    display:none;
+    z-index:9999;
+}
+
+.wdh-role-info .wdh-arrow{
+    width:19px;
+    height: 9px;
+    background: url('../images/top-arrow.png');
+    background-repeat: no-repeat;
+    float:right;
+    z-index:9999;
+}
+
+.wdh-role-info .wdh-info-content{
+    width: 76px;
+    min-height: 30px;
+    background: #000;
+    padding: 6px;
+    padding-bottom: 2px;
+    float:left;
+    z-index:9999;
+}
+
+.wdh-role-info .wdh-info-content .wdh-info-content-text{
+    width: 100%;
+    float:left;
+    color: #fccf1b;
+    border-bottom: 2px solid #fccf1b;
+    padding-bottom: 6px;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    z-index:9999;
+}
+
+
+/*
+ * Left Menu
+ * -----------------------------------------------------------------------------
+ */
+.wdh-logo.wdh-left{
+    left:20px;
+}
+
+/* Publish */
+
+.wdh-publish.wdh-left{
+    left: -28px;
+}
+
+/* Roll Back Info */
+.wdh-publish-info.wdh-left{
+    left:100px;
+}
+
+.wdh-publish-info.wdh-left .wdh-arrow{
+    background: url('../images/left-arrow.png');
+    float:left;
+}
+
+.wdh-publish-info.wdh-left .wdh-info-content{
+    float:right;
+}
+
+.wdh-publish-info.wdh-left .wdh-info-content .wdh-info-content-text{
+    float:right;
+}
+
+/* Roll Back */
+
+.wdh-roll-back.wdh-left{
+    left: -28px;
+}
+
+/* Roll Back Info */
+.wdh-roll-back-info.wdh-left{
+    left:93px;
+}
+
+.wdh-roll-back-info.wdh-left .wdh-arrow{
+    background: url('../images/left-arrow.png');
+    float:left;
+}
+
+.wdh-roll-back-info.wdh-left .wdh-info-content{
+    float:right;
+}
+
+.wdh-roll-back-info.wdh-left .wdh-info-content .wdh-info-content-text{
+    float:right;
+}
+
+/* Switch */
+
+.wdh-switch.wdh-left{
+    left:-28px;
+}
+
+/* Switch Info */
+.wdh-switch-info.wdh-left{
+    left:72px;
+}
+
+.wdh-switch-info.wdh-left .wdh-arrow{
+    background: url('../images/left-arrow.png');
+    float:left;
+}
+
+.wdh-switch-info.wdh-left .wdh-info-content{
+    float:right;
+}
+
+.wdh-switch-info.wdh-left .wdh-info-content .wdh-info-content-text{
+    float:right;
+}
+
+/* Resolution */
+
+.wdh-resolution.wdh-left{
+    left:-28px;
+}
+
+/* Resolution Info */
+.wdh-resolution-info.wdh-left{
+    left:72px;
+}
+
+.wdh-resolution-info.wdh-left .wdh-arrow{
+    background: url('../images/left-arrow.png');
+    float:left;
+}
+
+.wdh-resolution-info.wdh-left .wdh-info-content{
+    float:right;
+}
+
+.wdh-resolution-info.wdh-left .wdh-info-content .wdh-info-content-text{
+    float:right;
+}
+
+/* Show/Hide */
+
+.wdh-show-hide.wdh-left{
+    left:-28px;
+}
+
+/* Show/Hide Info */
+.wdh-show-hide-info.wdh-left{
+    left:14px;
+}
+
+.wdh-show-hide-info.wdh-left .wdh-arrow{
+    float:left;
+}
+
+.wdh-show-hide-info.wdh-left .wdh-info-content{
+    float:right;
+}
+
+.wdh-show-hide-info .wdh-info-content .wdh-info-content-text{
+    float:right;
+}
+
+/* Role */
+
+.wdh-role.wdh-left{
+    left:-28px;
+}
+
+/* Role Info */
+.wdh-role-info.wdh-left{
+    left:14px;
+}
+
+.wdh-role-info.wdh-left .wdh-arrow{
+    float:left;
+}
+
+.wdh-role-info.wdh-left .wdh-info-content{
+    float:right;
+}
+
+.wdh-role-info .wdh-info-content .wdh-info-content-text{
+    float:right;
+}
+
+
+/*
+ * Right Click Menu
+ * -----------------------------------------------------------------------------
+ */
+
+.wdh-svwe-right-click-menu{
+    width:200px;
+    position: absolute;
+    top:200px;
+    left:200px;
+    z-index: 999999999;
+    display:none;
+    opacity: 0.9;
+}
+
+.wdh-svwe-right-click-menu li{
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #171616;
+    border-bottom: 1px solid #3e3d3d;
+    color: #ffea98;
+    list-style: none;
+    padding-left: 17px;
+    text-transform: uppercase;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor:pointer;
+    -webkit-transition: background-color 500ms linear;
+    -moz-transition: background-color 500ms linear;
+    -o-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+
+.wdh-svwe-right-click-menu li:hover{
+    background-color: #000;
+    color: #fccf1b;
+    -webkit-transition: background-color 100ms linear;
+    -moz-transition: background-color 100ms linear;
+    -o-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
+}
+
+.wdh-editable{
+    opacity:1;
+}
+
+.wdh-editable:hover{
+    opacity:1;
+}
+
+/*
+ *  Headers: H1, H2, H3, H4, H5, H6
+ */
+
+.wdh-h:hover{
+    -webkit-box-shadow:inset 0 0 1px 1px #a7fe0d;
+    box-shadow:inset 0 0 1px 1px #a7fe0d;
+}
+
+.wdh-h-hover{
+    background-image: url('../images/wdh-h.png');
+}
+
+.wdh-h-hover-color{
+    opacity:1;
+}
+
+/*
+ * -------------------------------------
+ *  General Tags
+ * -------------------------------------
+ */
+
+/* 
+ * DIV, TABLE, ASIDE, FOOTER, HEADER, MAIN, SECTION
+ */
+
+.wdh-div:hover,
+.wdh-table:hover,
+.wdh-qaside:hover,
+.wdh-qfooter:hover,
+.wdh-qheader:hover,
+.wdh-qmain:hover,
+.wdh-qsection:hover{
+    -webkit-box-shadow:inset 0 0 1px 1px #bcbcbc;
+    box-shadow:inset 0 0 1px 1px #bcbcbc;
+
+}
+
+.wdh-div-hover,
+.wdh-table-hover,
+.wdh-qaside-hover,
+.wdh-qfooter-hover,
+.wdh-qheader-hover,
+.wdh-qmain-hover,
+.wdh-qsection-hover{
+    background-image: url('../images/wdh-div.png');
+}
+
+.wdh-div-hover-color,
+.wdh-table-hover-color,
+.wdh-qaside-hover-color,
+.wdh-qfooter-hover-color,
+.wdh-qheader-hover-color,
+.wdh-qmain-hover-color,
+.wdh-qsection-hover-color{
+    opacity:1;
+}
+
+/* 
+ * P, AREA, MAP, OBJECT, PARAM, ARTICLE, SUMMARY, AUDIO, EMBED, SOURCE, TRACK, VIDEO
+ */
+
+.wdh-p:hover,
+.wdh-area:hover,
+.wdh-map:hover,
+.wdh-object:hover,
+.wdh-param:hover,
+.wdh-qarticle:hover,
+.wdh-qsummary:hover,
+.wdh-qaudio:hover,
+.wdh-qembed:hover,
+.wdh-qsource:hover,
+.wdh-qtrack:hover,
+.wdh-qvideo:hover{
+    -webkit-box-shadow:inset 0 0 1px 1px #49D385;
+    box-shadow:inset 0 0 1px 1px #49D385;
+
+}
+
+.wdh-p-hover,
+.wdh-area-hover,
+.wdh-map-hover,
+.wdh-object-hover,
+.wdh-param-hover,
+.wdh-qarticle-hover,
+.wdh-qsummary-hover,
+.wdh-qaudio-hover,
+.wdh-qembed-hover,
+.wdh-qsource-hover,
+.wdh-qtrack-hover,
+.wdh-qvideo-hover{
+    background-image: url('../images/wdh-p.png');
+}
+
+.wdh-p-hover-color,
+.wdh-area-hover-color,
+.wdh-map-hover-color,
+.wdh-object-hover-color,
+.wdh-param-hover-color,
+.wdh-qarticle-hover-color,
+.wdh-qsummary-hover-color,
+.wdh-qaudio-hover-color,
+.wdh-qembed-hover-color,
+.wdh-qsource-hover-color,
+.wdh-qtrack-hover-color,
+.wdh-qvideo-hover-color{
+    opacity:1;
+}
+
+/* 
+ * SPAN, STRONG, CODE, BR, PRE, BDI, MARK, RP, RT, RUBY, TIME, WBR
+ */
+
+.wdh-span:hover,
+.wdh-strong:hover,
+.wdh-code:hover,
+.wdh-qbr:hover,
+.wdh-pre:hover,
+.wdh-qbdi:hover,
+.wdh-qmark:hover,
+.wdh-qrp:hover,
+.wdh-qrt:hover,
+.wdh-qruby:hover,
+.wdh-qtime:hover,
+.wdh-qwbr:hover{
+    -webkit-box-shadow:inset 0 0 1px 1px #69A400;
+    box-shadow:inset 0 0 1px 1px #69A400;
+
+}
+
+.wdh-span-hover,
+.wdh-strong-hover,
+.wdh-code-hover,
+.wdh-qbr-hover,
+.wdh-pre-hover,
+.wdh-qbdi-hover,
+.wdh-qmark-hover,
+.wdh-qrp-hover,
+.wdh-qrt-hover,
+.wdh-qruby-hover,
+.wdh-qtime-hover,
+.wdh-qwbr-hover{
+    background-image: url('../images/wdh-span.png');
+}
+
+.wdh-span-hover-color,
+.wdh-strong-hover-color,
+.wdh-code-hover-color,
+.wdh-qbr-hover-color,
+.wdh-pre-hover-color,
+.wdh-qbdi-hover-color,
+.wdh-qmark-hover-color,
+.wdh-qrp-hover-color,
+.wdh-qrt-hover-color,
+.wdh-qruby-hover-color,
+.wdh-qtime-hover-color,
+.wdh-qwbr-hover-color{
+    opacity:1;
+}
+
+/* 
+ * A, DETAILS, DIALOG, FIGCAPTION
+ */
+
+.wdh-a:hover,
+.wdh-qdetails:hover,
+.wdh-qdialog:hover,
+.wdh-qfigcaption:hover{
+    -webkit-box-shadow:inset 0 0 1px 1px #9e21e8;
+    box-shadow:inset 0 0 1px 1px #9e21e8;
+
+}
+
+.wdh-a-hover,
+.wdh-qdetails-hover,
+.wdh-qdialog-hover,
+.wdh-qfigcaption-hover{
+    background-image: url('../images/wdh-a.png');
+}
+
+.wdh-a-hover-color,
+.wdh-qdetails-hover-color,
+.wdh-qdialog-hover-color,
+.wdh-qfigcaption-hover-color{
+    opacity:1;
+}
+
+/* 
+ * IMG, B, I, EM, FIGURE, PROGRESS, CANVAS, SVG
+ */
+
+.wdh-qimg:hover,
+.wdh-b:hover,
+.wdh-i:hover,
+.wdh-em:hover,
+.wdh-qfigure:hover,
+.wdh-qprogress:hover,
+.wdh-qcanvas:hover,
+.wdh-qsvg:hover{
+    -webkit-box-shadow:inset 0 0 1px 1px #bbbbbb;
+    box-shadow:inset 0 0 1px 1px #bbbbbb;
+
+}
+
+.wdh-qimg-hover,
+.wdh-b-hover,
+.wdh-i-hover,
+.wdh-em-hover,
+.wdh-qfigure-hover,
+.wdh-qprogress-hover,
+.wdh-qcanvas-hover,
+.wdh-qsvg-hover{
+    background-image: url('../images/wdh-img.png');
+}
+
+.wdh-qimg-hover-color,
+.wdh-b-hover-color,
+.wdh-i-hover-color,
+.wdh-em-hover-color,
+.wdh-qfigure-hover-color,
+.wdh-qprogress-hover-color,
+.wdh-qcanvas-hover-color,
+.wdh-qsvg-hover-color{
+    opacity:1;
+}
+
+/* 
+ * UL, OL, THEAD, TH, TBODY, TFOOT, TR, FORM, FIELDSET, LEGEND, NAV
+ */
+
+.wdh-ul:hover,
+.wdh-ol:hover,
+.wdh-qthead:hover,
+.wdh-th:hover,
+.wdh-tbody:hover,
+.wdh-tfoot:hover,
+.wdh-tr:hover,
+.wdh-form:hover,
+.wdh-fieldset:hover,
+.wdh-legend:hover,
+.wdh-qnav:hover{
+    -webkit-box-shadow:inset 0 0 1px 1px #ff6597;
+    box-shadow:inset 0 0 1px 1px #ff6597;
+
+}
+
+.wdh-ul-hover,
+.wdh-ol-hover,
+.wdh-qthead-hover,
+.wdh-th-hover,
+.wdh-tbody-hover,
+.wdh-tfoot-hover,
+.wdh-tr-hover,
+.wdh-form-hover,
+.wdh-fieldset-hover,
+.wdh-legend-hover,
+.wdh-qnav-hover{
+    background-image: url('../images/wdh-ul.png');
+}
+
+.wdh-ul-hover-color,
+.wdh-ol-hover-color,
+.wdh-qthead-hover-color,
+.wdh-th-hover-color,
+.wdh-tbody-hover-color,
+.wdh-tfoot-hover-color,
+.wdh-tr-hover-color,
+.wdh-form-hover-color,
+.wdh-fieldset-hover-color,
+.wdh-legend-hover-color,
+.wdh-qnav-hover-color{
+    opacity:1;
+}
+
+/* 
+ * LI, TD, LABEL, INPUT, TEXTAREA, SELECT, BUTTON, MENUITEM, METER, DATALIST, KEYGEN, OUTPUT
+ */
+
+.wdh-li:hover,
+.wdh-td:hover,
+.wdh-label:hover,
+.wdh-input:hover,
+.wdh-textarea:hover,
+.wdh-select:hover,
+.wdh-button:hover,
+.wdh-qmenuitem:hover,
+.wdh-qmeter:hover,
+.wdh-qdatalist:hover,
+.wdh-qkeygen:hover,
+.wdh-qoutput:hover{
+    -webkit-box-shadow:inset 0 0 1px 1px #ff0052;
+    box-shadow:inset 0 0 1px 1px #ff0052;
+
+}
+
+.wdh-li-hover,
+.wdh-td-hover,
+.wdh-label-hover,
+.wdh-input-hover,
+.wdh-textarea-hover,
+.wdh-select-hover,
+.wdh-button-hover,
+.wdh-qmenuitem-hover,
+.wdh-qmeter-hover,
+.wdh-qdatalis-hover,
+.wdh-qkeygen-hover,
+.wdh-qoutput-hover{
+    background-image: url('../images/wdh-li.png');
+}
+
+.wdh-li-hover-color,
+.wdh-td-hover-color,
+.wdh-label-hover-color,
+.wdh-input-hover-color,
+.wdh-textarea-hover-color,
+.wdh-select-hover-color,
+.wdh-button-hover-color,
+.wdh-qmenuitem-hover-color,
+.wdh-qmeter-hover-color,
+.wdh-qdatalis-hover-color,
+.wdh-qkeygen-hover-color,
+.wdh-qoutput-hover-color{
+    opacity:1;
+}
+
+/* 
+ * Selected Element
+ */
+.wdh-svwe-element-selected .wdh-h:hover,
+.wdh-svwe-element-selected .wdh-h-hover-color,
+.wdh-svwe-element-selected .wdh-div:hover,
+.wdh-svwe-element-selected .wdh-div-hover-color,
+.wdh-svwe-element-selected .wdh-table:hover,
+.wdh-svwe-element-selected .wdh-table-hover-color,
+.wdh-svwe-element-selected .wdh-p:hover,
+.wdh-svwe-element-selected .wdh-p-hover-color,
+.wdh-svwe-element-selected .wdh-span:hover,
+.wdh-svwe-element-selected .wdh-span-hover-color,
+.wdh-svwe-element-selected .wdh-a:hover,
+.wdh-svwe-element-selected .wdh-a-hover-color,
+.wdh-svwe-element-selected .wdh-qimg:hover,
+.wdh-svwe-element-selected .wdh-qimg-hover-color,
+.wdh-svwe-element-selected .wdh-b:hover,
+.wdh-svwe-element-selected .wdh-b-hover-color,
+.wdh-svwe-element-selected .wdh-i:hover,
+.wdh-svwe-element-selected .wdh-i-hover-color,
+.wdh-svwe-element-selected .wdh-em:hover,
+.wdh-svwe-element-selected .wdh-em-hover-color,
+.wdh-svwe-element-selected .wdh-ul:hover,
+.wdh-svwe-element-selected .wdh-ul-hover-color,
+.wdh-svwe-element-selected .wdh-ol:hover,
+.wdh-svwe-element-selected .wdh-ol-hover-color,
+.wdh-svwe-element-selected .wdh-qthead:hover,
+.wdh-svwe-element-selected .wdh-qthead-hover-color,
+.wdh-svwe-element-selected .wdh-th:hover,
+.wdh-svwe-element-selected .wdh-th-hover-color,
+.wdh-svwe-element-selected .wdh-tbody:hover,
+.wdh-svwe-element-selected .wdh-tbody-hover-color,
+.wdh-svwe-element-selected .wdh-tfoot:hover,
+.wdh-svwe-element-selected .wdh-tfoot-hover-color,
+.wdh-svwe-element-selected .wdh-tr:hover,
+.wdh-svwe-element-selected .wdh-tr-hover-color,
+.wdh-svwe-element-selected .wdh-td:hover,
+.wdh-svwe-element-selected .wdh-td-hover-color,
+.wdh-svwe-element-selected .wdh-li:hover,
+.wdh-svwe-element-selected .wdh-li-hover-color,
+.wdh-svwe-element-selected .wdh-form:hover,
+.wdh-svwe-element-selected .wdh-form-hover-color,
+.wdh-svwe-element-selected .wdh-fieldset:hover,
+.wdh-svwe-element-selected .wdh-fieldset-hover-color,
+.wdh-svwe-element-selected .wdh-legend:hover,
+.wdh-svwe-element-selected .wdh-legend-hover-color,
+.wdh-svwe-element-selected .wdh-label:hover,
+.wdh-svwe-element-selected .wdh-label-hover-color,
+.wdh-svwe-element-selected .wdh-input:hover,
+.wdh-svwe-element-selected .wdh-input-hover-color,
+.wdh-svwe-element-selected .wdh-textarea:hover,
+.wdh-svwe-element-selected .wdh-textarea-hover-color,
+.wdh-svwe-element-selected .wdh-select:hover,
+.wdh-svwe-element-selected .wdh-select-hover-color,
+.wdh-svwe-element-selected .wdh-button:hover,
+.wdh-svwe-element-selected .wdh-button-hover-color,
+.wdh-svwe-element-selected .wdh-strong:hover,
+.wdh-svwe-element-selected .wdh-strong-hover-color,
+.wdh-svwe-element-selected .wdh-code:hover,
+.wdh-svwe-element-selected .wdh-code-hover-color,
+.wdh-svwe-element-selected .wdh-qbr:hover,
+.wdh-svwe-element-selected .wdh-qbr-hover-color,
+.wdh-svwe-element-selected .wdh-qarea:hover,
+.wdh-svwe-element-selected .wdh-qarea-hover-color,
+.wdh-svwe-element-selected .wdh-map:hover,
+.wdh-svwe-element-selected .wdh-map-hover-color,
+.wdh-svwe-element-selected .wdh-object:hover,
+.wdh-svwe-element-selected .wdh-object-hover-color,
+.wdh-svwe-element-selected .wdh-qparam:hover,
+.wdh-svwe-element-selected .wdh-qparam-hover-color,
+.wdh-svwe-element-selected .wdh-qpre:hover,
+.wdh-svwe-element-selected .wdh-qpre-hover-color,
+.wdh-svwe-element-selected .wdh-qarticle:hover,
+.wdh-svwe-element-selected .wdh-qarticle-hover-color,
+.wdh-svwe-element-selected .wdh-qaside:hover,
+.wdh-svwe-element-selected .wdh-qaside-hover-color,
+.wdh-svwe-element-selected .wdh-qbdi:hover,
+.wdh-svwe-element-selected .wdh-qbdi-hover-color,
+.wdh-svwe-element-selected .wdh-qdetails:hover,
+.wdh-svwe-element-selected .wdh-qdetails-hover-color,
+.wdh-svwe-element-selected .wdh-qdialog:hover,
+.wdh-svwe-element-selected .wdh-qdialog-hover-color,
+.wdh-svwe-element-selected .wdh-qfigcaption:hover,
+.wdh-svwe-element-selected .wdh-qfigcaption-hover-color,
+.wdh-svwe-element-selected .wdh-qfigure:hover,
+.wdh-svwe-element-selected .wdh-qfigure-hover-color,
+.wdh-svwe-element-selected .wdh-qfooter:hover,
+.wdh-svwe-element-selected .wdh-qfooter-hover-color,
+.wdh-svwe-element-selected .wdh-qheader:hover,
+.wdh-svwe-element-selected .wdh-qheader-hover-color,
+.wdh-svwe-element-selected .wdh-qmain:hover,
+.wdh-svwe-element-selected .wdh-qmain-hover-color,
+.wdh-svwe-element-selected .wdh-qmark:hover,
+.wdh-svwe-element-selected .wdh-qmark-hover-color,
+.wdh-svwe-element-selected .wdh-qmenuitem:hover,
+.wdh-svwe-element-selected .wdh-qmenuitem-hover-color,
+.wdh-svwe-element-selected .wdh-qmeter:hover,
+.wdh-svwe-element-selected .wdh-qnav-hover-color,
+.wdh-svwe-element-selected .wdh-qnav:hover,
+.wdh-svwe-element-selected .wdh-qnav-hover-color,
+.wdh-svwe-element-selected .wdh-qprogress:hover,
+.wdh-svwe-element-selected .wdh-qprogress-hover-color,
+.wdh-svwe-element-selected .wdh-qrp:hover,
+.wdh-svwe-element-selected .wdh-qrp-hover-color,
+.wdh-svwe-element-selected .wdh-qrt:hover,
+.wdh-svwe-element-selected .wdh-qrt-hover-color,
+.wdh-svwe-element-selected .wdh-qruby:hover,
+.wdh-svwe-element-selected .wdh-qruby-hover-color,
+.wdh-svwe-element-selected .wdh-qsection:hover,
+.wdh-svwe-element-selected .wdh-qsection-hover-color,
+.wdh-svwe-element-selected .wdh-qsummary:hover,
+.wdh-svwe-element-selected .wdh-qsummary-hover-color,
+.wdh-svwe-element-selected .wdh-qtime:hover,
+.wdh-svwe-element-selected .wdh-qtime-hover-color,
+.wdh-svwe-element-selected .wdh-qwbr:hover,
+.wdh-svwe-element-selected .wdh-qwbr-hover-color,
+.wdh-svwe-element-selected .wdh-qdatalist:hover,
+.wdh-svwe-element-selected .wdh-qdatalist-hover-color,
+.wdh-svwe-element-selected .wdh-qkeygen:hover,
+.wdh-svwe-element-selected .wdh-qkeygen-hover-color,
+.wdh-svwe-element-selected .wdh-qoutput:hover,
+.wdh-svwe-element-selected .wdh-qoutput-hover-color,
+.wdh-svwe-element-selected .wdh-qcanvas:hover,
+.wdh-svwe-element-selected .wdh-qcanvas-hover-color,
+.wdh-svwe-element-selected .wdh-qsvg:hover,
+.wdh-svwe-element-selected .wdh-qsvg-hover-color,
+.wdh-svwe-element-selected .wdh-qaudio:hover,
+.wdh-svwe-element-selected .wdh-qaudio-hover-color,
+.wdh-svwe-element-selected .wdh-qembed:hover,
+.wdh-svwe-element-selected .wdh-qembed-hover-color,
+.wdh-svwe-element-selected .wdh-qsource:hover,
+.wdh-svwe-element-selected .wdh-qsource-hover-color,
+.wdh-svwe-element-selected .wdh-qtrack:hover,
+.wdh-svwe-element-selected .wdh-qtrack-hover-color,
+.wdh-svwe-element-selected .wdh-qvideo:hover,
+.wdh-svwe-element-selected .wdh-qvideo-hover-color{
+    -webkit-box-shadow:inherit;
+    box-shadow:inherit;
+    opacity:inherit !important;
+}
+
+.wdh-svwe-element-selected .wdh-h-hover,
+.wdh-svwe-element-selected .wdh-div-hover,
+.wdh-svwe-element-selected .wdh-table-hover,
+.wdh-svwe-element-selected .wdh-p-hover,
+.wdh-svwe-element-selected .wdh-span-hover,
+.wdh-svwe-element-selected .wdh-a-hover,
+.wdh-svwe-element-selected .wdh-qimg-hover,
+.wdh-svwe-element-selected .wdh-b-hover,
+.wdh-svwe-element-selected .wdh-i-hover,
+.wdh-svwe-element-selected .wdh-em-hover,
+.wdh-svwe-element-selected .wdh-ul-hover,
+.wdh-svwe-element-selected .wdh-ol-hover,
+.wdh-svwe-element-selected .wdh-qthead-hover,
+.wdh-svwe-element-selected .wdh-th-hover,
+.wdh-svwe-element-selected .wdh-tbody-hover,
+.wdh-svwe-element-selected .wdh-tfoot-hover,
+.wdh-svwe-element-selected .wdh-tr-hover,
+.wdh-svwe-element-selected .wdh-td-hover,
+.wdh-svwe-element-selected .wdh-li-hover,
+.wdh-svwe-element-selected .wdh-form-hover,
+.wdh-svwe-element-selected .wdh-fieldset-hover,
+.wdh-svwe-element-selected .wdh-legend-hover,
+.wdh-svwe-element-selected .wdh-label-hover,
+.wdh-svwe-element-selected .wdh-input-hover,
+.wdh-svwe-element-selected .wdh-textarea-hover,
+.wdh-svwe-element-selected .wdh-select-hover,
+.wdh-svwe-element-selected .wdh-button-hover,
+.wdh-svwe-element-selected .wdh-strong-hover,
+.wdh-svwe-element-selected .wdh-code-hover,
+.wdh-svwe-element-selected .wdh-qbr-hover,
+.wdh-svwe-element-selected .wdh-qarea-hover,
+.wdh-svwe-element-selected .wdh-map-hover,
+.wdh-svwe-element-selected .wdh-object-hover,
+.wdh-svwe-element-selected .wdh-qparam-hover,
+.wdh-svwe-element-selected .wdh-qpre-hover,
+.wdh-svwe-element-selected .wdh-qarticle-hover,
+.wdh-svwe-element-selected .wdh-qaside-hover,
+.wdh-svwe-element-selected .wdh-qbdi-hover,
+.wdh-svwe-element-selected .wdh-qdetails-hover,
+.wdh-svwe-element-selected .wdh-qdialog-hover,
+.wdh-svwe-element-selected .wdh-qfigcaption-hover,
+.wdh-svwe-element-selected .wdh-qfigure-hover,
+.wdh-svwe-element-selected .wdh-qfooter-hover,
+.wdh-svwe-element-selected .wdh-qheader-hover,
+.wdh-svwe-element-selected .wdh-qmain-hover,
+.wdh-svwe-element-selected .wdh-qmark-hover,
+.wdh-svwe-element-selected .wdh-qmenuitem-hover,
+.wdh-svwe-element-selected .wdh-qnav-hover,
+.wdh-svwe-element-selected .wdh-qnav-hover,
+.wdh-svwe-element-selected .wdh-qprogress-hover,
+.wdh-svwe-element-selected .wdh-qrp-hover,
+.wdh-svwe-element-selected .wdh-qrt-hover,
+.wdh-svwe-element-selected .wdh-qruby-hover,
+.wdh-svwe-element-selected .wdh-qsection-hover,
+.wdh-svwe-element-selected .wdh-qsummary-hover,
+.wdh-svwe-element-selected .wdh-qtime-hover,
+.wdh-svwe-element-selected .wdh-qwbr-hover,
+.wdh-svwe-element-selected .wdh-qdatalist-hover,
+.wdh-svwe-element-selected .wdh-qkeygen-hover,
+.wdh-svwe-element-selected .wdh-qoutput-hover,
+.wdh-svwe-element-selected .wdh-qcanvas-hover,
+.wdh-svwe-element-selected .wdh-qsvg-hover,
+.wdh-svwe-element-selected .wdh-qaudio-hover,
+.wdh-svwe-element-selected .wdh-qembed-hover,
+.wdh-svwe-element-selected .wdh-qsource-hover,
+.wdh-svwe-element-selected .wdh-qtrack-hover,
+.wdh-svwe-element-selected .wdh-qvideo-hover{
+    background-image:none !important;
+}
+
+.wdh-svwe-element-is-selected,
+.wdh-svwe-element-is-selected:hover{
+    -webkit-box-shadow: 0 0 20px 3px #383314 !important;
+    box-shadow: 0 0 20px 3px #383314 !important;
+}
+
+.wdh-svwe-element-is-selected-second,
+.wdh-svwe-element-is-selected-second:hover{
+    -webkit-box-shadow: 0 0 0 1px #444 !important;
+    box-shadow: 0 0 0 1px #444 !important;
+}
+
+/*UI RESET*/
+
+.ui-resizable-se{
+    background-image:inherit;
+}
+
+/*
+ * Menu Activator
+ * -----------------------------------------------------------------------------
+ */
+
+.wdh-svwe-menu-activate{
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+    z-index: 9998;
+}
+
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content{
+    position:relative;
+    float:left;
+}
+
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-synoptic{
+    cursor:pointer;
+    float: left;
+}
+
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-synoptic.wdh-svwe-menu-activate-20{
+    width: 18px;
+    height: 20px;
+    background: url('../images/sprite_logo.png') -57px -23px;
+}
+
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-synoptic.wdh-svwe-menu-activate-20:hover,
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-synoptic.wdh-svwe-menu-activate-20.wdh-svwe-menu-activated{
+    background: url('../images/sprite_logo.png') -12px -23px;
+}
+
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-synoptic.wdh-svwe-menu-activate-30{
+    width: 23px;
+    height: 23px;
+    background: url('../images/sprite_logo.png') -55px 0px;
+}
+
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-synoptic.wdh-svwe-menu-activate-30:hover,
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-synoptic.wdh-svwe-menu-activate-30.wdh-svwe-menu-activated{
+    background: url('../images/sprite_logo.png') -10px 0px;
+}
+
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-synoptic.wdh-svwe-menu-activate-40{
+    width: 30px;
+    height: 33px;
+    background: url('../images/sprite_logo.png') -57px 33px;
+}
+
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-synoptic.wdh-svwe-menu-activate-40:hover,
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-synoptic.wdh-svwe-menu-activate-40.wdh-svwe-menu-activated{
+    background: url('../images/sprite_logo.png') -12px 33px;
+}
+
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-tooltip{
+    float: left;
+    margin-top: 3px;
+    display:none;
+}
+
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-tooltip .wdh-svwe-menu-activate-tooltip-arrow{
+    background: url('../images/left-arrow.png');
+    float:left;
+    width:6px;
+    height: 23px;
+    margin-top: 0px;
+}
+
+.wdh-svwe-menu-activate .wdh-svwe-menu-activate-content .wdh-svwe-menu-activate-tooltip .wdh-svwe-menu-activate-tooltip-text{
+    min-height: 20px;
+    background: #000;
+    padding: 6px;
+    float:left;
+    z-index:9999;
+    color: #fccf1b;
+    border-bottom: 1px solid #fccf1b;
+    font-family: 'Open Sans';
+    font-size: 12px;
+    padding-top: 1px;
+    padding-bottom: 0px;
+}
+
+/*
+ * Element Menu
+ */
+
+.wdh-svwe-element-menu{
+    width: 278px;
+    height: 22px;
+    position: absolute;
+    top: -22px;
+    left: 0px;
+    border-radius: 5px;
+    display: none;
+    z-index: 9998;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button{
+    background-color: #2a2929;
+    -webkit-transition: background-color 800ms linear;
+    -moz-transition: background-color 800ms linear;
+    -o-transition: background-color 800ms linear;
+    transition: background-color 800ms linear;
+    margin: 0px;
+    padding: 0px;
+    width: 22px;
+    height: 22px;
+    float: left;
+    cursor: pointer;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button:hover{
+    background-color: #000;
+    -webkit-transition: background-color 500ms linear;
+    -moz-transition: background-color 500ms linear;
+    -o-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-left-round{
+    border-radius: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-right-round{
+    border-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-right-border{
+    border-right: 1px solid #444444;
+}
+
+/* Edit Design Button */
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-edit{
+    background: #000000 url('../images/sprite.png') 39px -5px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-edit.wdh-svwe-selected,
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-edit:hover{
+    background: #000000 url('../images/sprite.png') 63px -5px;
+}
+
+/* Edit Text Button */
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-edit-text{
+    background: #000000 url('../images/sprite.png') 36px -210px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-edit-text.wdh-svwe-selected,
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-edit-text:hover{
+    background: #000000 url('../images/sprite.png') 63px -210px;
+}
+
+/* Zoom In Button */
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-zoom-in{
+    background: #000000 url('../images/sprite_element.png') 40px 28px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-zoom-in.wdh-svwe-selected,
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-zoom-in:hover{
+    background: #000000 url('../images/sprite_element.png') 64px 28px;
+}
+
+/* Zoom Out Button */
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-zoom-out{
+    background: #000000 url('../images/sprite_element.png') 40px 52px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-zoom-out.wdh-svwe-selected,
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-zoom-out:hover{
+    background: #000000 url('../images/sprite_element.png') 64px 52px;
+}
+
+/* Next Button */
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-next{
+    background: #000000 url('../images/sprite_element.png') 45px 102px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-next.wdh-svwe-selected,
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-next:hover{
+    background: #000000 url('../images/sprite_element.png') 65px 102px;
+}
+
+/* Previous Button */
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-previous{
+    background: #000000 url('../images/sprite_element.png') 45px 78px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-previous.wdh-svwe-selected,
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-previous:hover{
+    background: #000000 url('../images/sprite_element.png') 65px 78px;
+}
+
+/* Copy Button */
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-copy{
+    background: #000000 url('../images/sprite.png') 39px -105px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-copy.wdh-svwe-selected,
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-copy:hover{
+    background: #000000 url('../images/sprite.png') 63px -105px;
+}
+
+/* Paste Button */
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-paste{
+    background: #000000 url('../images/sprite.png') 39px -132px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-paste:hover{
+    background: #000000 url('../images/sprite.png') 63px -132px;
+}
+
+/* Path Button */
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-path{
+    background: #000000 url('../images/sprite.png') 39px -30px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-path:hover{
+    background: #000000 url('../images/sprite.png') 63px -30px;
+}
+
+/* Roll Back Button */
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-roll-back{
+    background: #000000 url('../images/sprite.png') 39px -54px;
+}
+
+.wdh-svwe-element-menu .wdh-svwe-em-button.wdh-svwe-em-button-roll-back:hover{
+    background: #000000 url('../images/sprite.png') 63px -54px;
+}
+
+.wdh-svwe-tooltip{
+    position:relative;
+    background: inherit;
+    background-color: inherit;
+    margin-left: 0px; 
+}
+
+.wdh-svwe-tooltip .wdh-svwe-information{
+    display:none;
+    background-color: #000 !important;
+    padding: 10px !important;
+    position: absolute !important;
+    top: 22px !important;
+    opacity: 1 !important;
+    color: #f8dc6b !important;
+    left: 0px;
+    z-index:9 !important;
+    max-width: 240px !important;
+    border-radius: 0px !important; 
+    font-size:12px !important;
+    text-align: center !important;
+    line-height: 14px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight:400 !important;
+    font-style:normal !important;
+    text-transform:capitalize !important;
+}
+
+.wdh-svwe-tooltip .wdh-svwe-information.wdh-min100{
+    min-width: 75px !important;
+}
+
+.wdh-svwe-tooltip .wdh-svwe-information.wdh-min50{
+    min-width: 60px !important;
+}
+
+/* INSTALATION */
+/*----------------------------------*/
+
+/* MESSAGE */
+
+.wdh-svwe-message{
+    width:350px;
+    padding: 10px;
+    margin:70px auto;
+    border:1px solid #ddd;
+    text-align: center;
+    overflow: hidden;
+    background: #f1f1f1;
+    display:none;
+    -webkit-box-shadow: 5px 1px 15px 0 #BABABA;
+    box-shadow: 5px 1px 15px 0 #BABABA;
+}
+
+.wdh-svwe-message .wdh-loading{
+    width:100%;
+    height: 60px;
+    background:url('../images/wdh_loader.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+.wdh-svwe-message .wdh-success{
+    padding: 10px;
+    color: #444;
+}
+
+/* FORM */
+.wdh-svwe-form{
+    width:350px;
+    padding: 10px;
+    margin:0 auto;
+    border:1px solid #ddd;
+    text-align: center;
+    overflow: hidden;
+    background: #f1f1f1;
+    display:none;
+    -webkit-box-shadow: 5px 1px 15px 0 #BABABA;
+    box-shadow: 5px 1px 15px 0 #BABABA;
+}
+
+.wdh-svwe-form h1{
+    width:330px;
+    float:left;
+    font-size:20px;
+    color:#fff;
+    font-weight: 100;
+    background: #000;
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.wdh-svwe-form h2{
+    width:330px;
+    float:left;
+    font-size:17px;
+    color:#444;
+    font-weight: 100;
+    background: #ddd;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.wdh-svwe-form .wdh-svwe-field{
+    width:100%;
+    float:left;
+    margin-top: 5px;
+}
+
+.wdh-svwe-form .wdh-svwe-field label{
+    width:30%;
+    float:left;
+    padding-top: 5px;
+}
+
+.wdh-svwe-form .wdh-svwe-field input, 
+.wdh-svwe-form .wdh-svwe-field select{
+    width:65%;
+    float:left;
+    padding: 5px;
+    border:1px solid #fccf1b;
+    background-color: #f8dc6b;
+}
+
+.wdh-svwe-form .wdh-svwe-field .error{
+    width:65%;
+    float:left;
+    padding: 5px;
+    background: #d32323;
+    color: #fff;
+    margin-left: 30%;
+    margin-top: 5px;
+    display:none;
+}
+
+.wdh-svwe-form input[type="submit"]{
+    width:350px;
+    float:left;
+    font-size:20px;
+    color:#fff;
+    font-weight: 100;
+    font-style: normal;
+    background-color: #444;
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border:0px;
+    cursor:pointer;
+    margin-top: 10px;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+.wdh-svwe-form input[type="submit"]:hover{
+    color:#fccf1b;
+    background: #000;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+.ui-wrapper{
+    overflow: hidden !important;
+}
