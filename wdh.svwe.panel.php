@@ -1,9 +1,9 @@
 <?php
 
 /* -------------------------------------------------------------------
- * Project Name: Synoptic Web Designer: best WordPress design tool Light
+ * Project Name: Synoptic Web Designer: best WordPress design tool
  * Project Version: 1.0
- * Project URL: http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool-light/
+ * Project URL: http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool/
  * Author: WDH - Web Developers House
  * Author URL: http://www.wdh.im/
  * File: wdh.svwe.panel.php
@@ -244,7 +244,7 @@ if (!class_exists("wdhSVWE_Panel")) {
                                                           'field_condition' => 'AND');
                 $arrayNo++;
             }
-          
+            
             // Font-Style
             if(isset($wdhAllCSS->fontStyle)) {
                 $wdhFIELD['conditions'][$arrayNo] = array('field_label' => 'text_font_style',
@@ -331,375 +331,460 @@ if (!class_exists("wdhSVWE_Panel")) {
                 $arrayNo++;
             }
             
-            if($loadStep == 'text-settings') {
+             
+            switch($loadStep){
+                case 'text-settings':
+                    // Text - General Settings
+                    //--------------------------------------------------------------
+
+                    // Text-Color- START
+                    array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
+                    array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['TXT_TEXT_COLOR'].':</label>');
+                    array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
+                                                            $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
+                                                            $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'text_color';
+                                                            $wdhFIELD['json_value'] = '';
+                                                            $wdhFIELD['value']      = '';
+                                                            $wdhFIELD['edit']       = true;
+                                                            $wdhINPUT['type'] = 'colorpicker';
+                                                            // TOOLTIP
+                                                            $wdhTOOLTIP['text']     = $wdhSVWE['TXT_TEXT_COLOR_INFO'];
+                                                            $wdhTOOLTIP['position'] = 'right';
+                                                            // FILTER
+                                                            $wdhFILTER['is_required']     = true;
+                                                            //$elementID = $wdhPath;
+                                                            if ($category == 'normal') {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"color:#\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"color:#\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                            } else {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                            }
+
+                                                            // DISPLAY
+                    array_push($settingsHTML ,              $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
+                    array_push($settingsHTML, ' </div>');
+                    array_push($settingsHTML, '</li>');
+                    // Text-Color END
+
+                    // Font-Family - START
+                    array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
+                    array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['TXT_FONT_FAMILY'].':</label>');
+                    array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
+                                                            $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
+                                                            $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'text_font_family';
+                                                            $wdhFIELD['json_value'] = '';
+                                                            $wdhFIELD['value']      = '';
+                                                            $wdhFIELD['edit']       = true;
+
+
+                                                            $wdhINPUT['type'] = 'font';
+
+                                                            // TOOLTIP
+                                                            $wdhTOOLTIP['text']     = $wdhSVWE['TXT_FONT_FAMILY_INFO'];
+                                                            $wdhTOOLTIP['position'] = 'right';
+                                                            // FILTER
+                                                            $wdhFILTER['is_required']     = true;
+                                                            //$elementID = $wdhPath;
+
+                                                            if ($category == 'normal') {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = '';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = 'var wdhCurrVar = window.valueNow+\"'.$importantCSS.';\"; if (wdhCurrVar.indexOf(\":\") !== -1) { wdhGFontSet($jWDH('.$elementSelected.'), wdhCurrVar); } else { $jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"font-family\",window.valueNow+\"'.$importantCSS.';\"}); }';
+                                                            } else {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = '';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = 'var elementPosition = $jWDH('.$elementSelected.').getDomPosition()+1; currentDomPath = removeWDH(wdhRemover($jWDH('.$elementSelected.').getDomPath()))+\":nth-child(\"+elementPosition+\")\", wdhCurrVar = window.valueNow+\"'.$importantCSS.';\"; console.log(currentDomPath); if (wdhCurrVar.indexOf(\":\") !== -1) { wdhGFontSetHover(currentDomPath, wdhCurrVar); } else { $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ font-family: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); }';
+                                                            }
+
+                                                            // DISPLAY
+                    array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
+                    array_push($settingsHTML, ' </div>');
+                    array_push($settingsHTML, '</li>');
+                    // Font-Family - END
+
+                    // Font-Style- START
+                    array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.' wdh-swve-font-style">');
+                    array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['TXT_FONT_STYLE'].':</label>');
+                    array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
+                                                            $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
+                                                            $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'text_font_style';
+                                                            $wdhFIELD['json_value'] = '';
+                                                            $wdhFIELD['value']      = '';
+                                                            $wdhFIELD['edit']       = true;
+
+
+                                                            $wdhINPUT['type'] = 'select';
+                                                            $wdhINPUT['values'] = 'inherit|normal|italic|oblique';
+                                                            // TOOLTIP
+                                                            $wdhTOOLTIP['text']     = $wdhSVWE['TXT_FONT_STYLE_INFO'];
+                                                            $wdhTOOLTIP['position'] = 'right';
+                                                            // FILTER
+                                                            $wdhFILTER['is_required']     = true;
+                                                            //$elementID = $wdhPath;
+                                                            if ($category == 'normal') {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"font-style:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"font-style:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                            } else {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ font-style: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ font-style: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ font-style: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ font-style: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                            }
+
+                                                            // DISPLAY
+                    array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
+                    array_push($settingsHTML, ' </div>');
+                    array_push($settingsHTML, '</li>');
+                    // Font-Style- END
+                    // Letter-Spacing START
+                    array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
+                    array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['TXT_LETTER_SPACING'].':</label>');
+                    array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
+                                                            $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
+                                                            $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'text_font_letter_spacing';
+                                                            $wdhFIELD['json_value'] = '';
+                                                            $wdhFIELD['value']      = '';
+                                                            $wdhFIELD['edit']       = true;
+
+
+                                                            $wdhINPUT['type'] = 'size';
+                                                            $wdhINPUT['slider_min']   = 0; // set slider min
+                                                            $wdhINPUT['slider_max']   = 100; // set slider max
+                                                            $wdhINPUT['slider_range'] = 1; // set slider step
+                                                            $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
+
+                                                            // TOOLTIP
+                                                            $wdhTOOLTIP['text']     = $wdhSVWE['TXT_LETTER_SPACING_INFO'];
+                                                            $wdhTOOLTIP['position'] = 'right';
+                                                            // FILTER
+                                                            $wdhFILTER['is_required']     = true;
+                                                            //$elementID = $wdhPath;
+                                                            if ($category == 'normal') {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"letter-spacing:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"letter-spacing:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                            } else {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ letter-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ letter-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ letter-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ letter-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                            }
+
+                                                            // DISPLAY
+                    array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
+                    array_push($settingsHTML, ' </div>');
+                    array_push($settingsHTML, '</li>');
+                    // Letter Spacing- END
+
+                    // Word-Spacing START
+                    array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
+                    array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['TXT_WORD_SPACING'].':</label>');
+                    array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
+                                                            $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
+                                                            $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'text_font_word_spacing';
+                                                            $wdhFIELD['json_value'] = '';
+                                                            $wdhFIELD['value']      = '';
+                                                            $wdhFIELD['edit']       = true;
+
+
+                                                            $wdhINPUT['type'] = 'size';
+                                                            $wdhINPUT['slider_min']   = 0; // set slider min
+                                                            $wdhINPUT['slider_max']   = 100; // set slider max
+                                                            $wdhINPUT['slider_range'] = 1; // set slider step
+                                                            $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
+
+                                                            // TOOLTIP
+                                                            $wdhTOOLTIP['text']     = $wdhSVWE['TXT_WORD_SPACING_INFO'];
+                                                            $wdhTOOLTIP['position'] = 'right';
+                                                            // FILTER
+                                                            $wdhFILTER['is_required']     = true;
+                                                            //$elementID = $wdhPath;
+                                                            if ($category == 'normal') {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"word-spacing:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"word-spacing:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                            } else {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ word-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ word-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ word-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ word-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                            }
+
+                                                            // DISPLAY
+                    array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
+                    array_push($settingsHTML, ' </div>');
+                    array_push($settingsHTML, '</li>');
+                    // Word Spacing- END
+                    
+                    break;
                 
-                // Text - General Settings
-                //--------------------------------------------------------------
-                
-                // Text-Color- START
-                array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
-                array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['TXT_TEXT_COLOR'].':</label>');
-                array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
-                                                        $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
-                                                        $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'text_color';
-                                                        $wdhFIELD['json_value'] = '';
-                                                        $wdhFIELD['value']      = '';
-                                                        $wdhFIELD['edit']       = true;
-                                                        $wdhINPUT['type'] = 'colorpicker';
-                                                        // TOOLTIP
-                                                        $wdhTOOLTIP['text']     = $wdhSVWE['TXT_TEXT_COLOR_INFO'];
-                                                        $wdhTOOLTIP['position'] = 'right';
-                                                        // FILTER
-                                                        $wdhFILTER['is_required']     = true;
-                                                        //$elementID = $wdhPath;
-                                                        if ($category == 'normal') {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"color:#\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"color:#\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                        } else {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                        }
-                                                        
-                                                        // DISPLAY
-                array_push($settingsHTML ,              $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
-                array_push($settingsHTML, ' </div>');
-                array_push($settingsHTML, '</li>');
-                // Text-Color END
-               
-                // Font-Family - START
-                array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
-                array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['TXT_FONT_FAMILY'].':</label>');
-                array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
-                                                        $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
-                                                        $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'text_font_family';
-                                                        $wdhFIELD['json_value'] = '';
-                                                        $wdhFIELD['value']      = '';
-                                                        $wdhFIELD['edit']       = true;
-                                                        
-                                                        
-                                                        $wdhINPUT['type'] = 'font';
-                                                        
-                                                        // TOOLTIP
-                                                        $wdhTOOLTIP['text']     = $wdhSVWE['TXT_FONT_FAMILY_INFO'];
-                                                        $wdhTOOLTIP['position'] = 'right';
-                                                        // FILTER
-                                                        $wdhFILTER['is_required']     = true;
-                                                        //$elementID = $wdhPath;
-                                                        
-                                                        if ($category == 'normal') {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = '';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"font-family:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                        } else {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = '';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ font-family: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ font-family: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                        }
-                                                        
-                                                        // DISPLAY
-                array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
-                array_push($settingsHTML, ' </div>');
-                array_push($settingsHTML, '</li>');
-                // Font-Family - END
-                
-                // Font-Style- START
-                array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.' wdh-swve-font-style">');
-                array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['TXT_FONT_STYLE'].':</label>');
-                array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
-                                                        $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
-                                                        $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'text_font_style';
-                                                        $wdhFIELD['json_value'] = '';
-                                                        $wdhFIELD['value']      = '';
-                                                        $wdhFIELD['edit']       = true;
-                                                        
-                                                        
-                                                        $wdhINPUT['type'] = 'select';
-                                                        $wdhINPUT['values'] = 'inherit|normal|italic|oblique';
-                                                        // TOOLTIP
-                                                        $wdhTOOLTIP['text']     = $wdhSVWE['TXT_FONT_STYLE_INFO'];
-                                                        $wdhTOOLTIP['position'] = 'right';
-                                                        // FILTER
-                                                        $wdhFILTER['is_required']     = true;
-                                                        //$elementID = $wdhPath;
-                                                        if ($category == 'normal') {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"font-style:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"font-style:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                        } else {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ font-style: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ font-style: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ font-style: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ font-style: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                        }
-                                                        
-                                                        // DISPLAY
-                array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
-                array_push($settingsHTML, ' </div>');
-                array_push($settingsHTML, '</li>');
-                // Font-Style- END
-                
-                // Text - Advanced Settings
-                
-                // Letter-Spacing START
-                array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
-                array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['TXT_LETTER_SPACING'].':</label>');
-                array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
-                                                        $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
-                                                        $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'text_font_letter_spacing';
-                                                        $wdhFIELD['json_value'] = '';
-                                                        $wdhFIELD['value']      = '';
-                                                        $wdhFIELD['edit']       = true;
-                                                        
-                                                        
-                                                        $wdhINPUT['type'] = 'size';
-                                                        $wdhINPUT['slider_min']   = 0; // set slider min
-                                                        $wdhINPUT['slider_max']   = 100; // set slider max
-                                                        $wdhINPUT['slider_range'] = 1; // set slider step
-                                                        $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
-                                                        
-                                                        // TOOLTIP
-                                                        $wdhTOOLTIP['text']     = $wdhSVWE['TXT_LETTER_SPACING_INFO'];
-                                                        $wdhTOOLTIP['position'] = 'right';
-                                                        // FILTER
-                                                        $wdhFILTER['is_required']     = true;
-                                                        //$elementID = $wdhPath;
-                                                        if ($category == 'normal') {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"letter-spacing:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"letter-spacing:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                        } else {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ letter-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ letter-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ letter-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ letter-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                        }
-                                                        
-                                                        // DISPLAY
-                array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
-                array_push($settingsHTML, ' </div>');
-                array_push($settingsHTML, '</li>');
-                // Letter Spacing- END
-                
-                // Word-Spacing START
-                array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
-                array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['TXT_WORD_SPACING'].':</label>');
-                array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
-                                                        $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
-                                                        $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'text_font_word_spacing';
-                                                        $wdhFIELD['json_value'] = '';
-                                                        $wdhFIELD['value']      = '';
-                                                        $wdhFIELD['edit']       = true;
-                                                        
-                                                        
-                                                        $wdhINPUT['type'] = 'size';
-                                                        $wdhINPUT['slider_min']   = 0; // set slider min
-                                                        $wdhINPUT['slider_max']   = 100; // set slider max
-                                                        $wdhINPUT['slider_range'] = 1; // set slider step
-                                                        $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
-                                                        
-                                                        // TOOLTIP
-                                                        $wdhTOOLTIP['text']     = $wdhSVWE['TXT_WORD_SPACING_INFO'];
-                                                        $wdhTOOLTIP['position'] = 'right';
-                                                        // FILTER
-                                                        $wdhFILTER['is_required']     = true;
-                                                        //$elementID = $wdhPath;
-                                                        if ($category == 'normal') {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"word-spacing:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"word-spacing:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                        } else {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ word-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ word-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ word-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ word-spacing: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                        }
-                                                        
-                                                        // DISPLAY
-                array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
-                array_push($settingsHTML, ' </div>');
-                array_push($settingsHTML, '</li>');
-                // Word Spacing- END
-               
+                case 'box-settings':
+                    // Box - General Settings
                  
-            } else if($loadStep == 'box-settings') {
+                    // Box-Width- START
+                    array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
+                    array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['BOX_WIDTH'].':</label>');
+                    array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
+                                                            $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
+                                                            $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'box_width';
+                                                            $wdhFIELD['json_value'] = '';
+                                                            $wdhFIELD['value']      = '';
+                                                            $wdhFIELD['edit']       = true;
+
+
+                                                            $wdhINPUT['type'] = 'size';
+                                                            $wdhINPUT['slider_min']   = 0; // set slider min
+                                                            $wdhINPUT['slider_max']   = 1200; // set slider max
+                                                            $wdhINPUT['slider_range'] = 1; // set slider step
+                                                            $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
+
+                                                            // TOOLTIP
+                                                            $wdhTOOLTIP['text']     = $wdhSVWE['BOX_WIDTH_INFO'];
+                                                            $wdhTOOLTIP['position'] = 'right';
+                                                            // FILTER
+                                                            $wdhFILTER['is_required']     = true;
+                                                            //$elementID = $wdhPath;
+                                                            if ($category == 'normal') {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"width:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"width:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                            } else {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ width: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ width: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ width: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ width: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                            }
+
+                                                            // DISPLAY
+                    array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
+                    array_push($settingsHTML, ' </div>');
+                    array_push($settingsHTML, '</li>');
+                    // Box-Width END
+
+                    // Box-Height- START
+                    array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
+                    array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['BOX_HEIGHT'].':</label>');
+                    array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
+                                                            $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
+                                                            $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'box_height';
+                                                            $wdhFIELD['json_value'] = '';
+                                                            $wdhFIELD['value']      = '';
+                                                            $wdhFIELD['edit']       = true;
+
+
+                                                            $wdhINPUT['type'] = 'size';
+                                                            $wdhINPUT['slider_min']   = 0; // set slider min
+                                                            $wdhINPUT['slider_max']   = 1200; // set slider max
+                                                            $wdhINPUT['slider_range'] = 1; // set slider step
+                                                            $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
+
+                                                            // TOOLTIP
+                                                            $wdhTOOLTIP['text']     = $wdhSVWE['BOX_HEIGHT_INFO'];
+                                                            $wdhTOOLTIP['position'] = 'right';
+                                                            // FILTER
+                                                            $wdhFILTER['is_required']     = true;
+                                                            //$elementID = $wdhPath;
+                                                            if ($category == 'normal') {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"height:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"height:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                            } else {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ height: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ height: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ height: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ height: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                            }
+
+                                                            // DISPLAY
+                    array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
+                    array_push($settingsHTML, ' </div>');
+                    array_push($settingsHTML, '</li>');
+                    // Box-Height END
+
+                    // Box-Border - START
+                    array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
+                    array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['BOX_BORDER'].':</label>');
+                    array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
+                                                            $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
+                                                            $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'box_border';
+                                                            $wdhFIELD['json_value'] = '';
+                                                            $wdhFIELD['value']      = '';
+                                                            $wdhFIELD['edit']       = true;
+
+
+                                                            $wdhINPUT['type'] = 'border';
+                                                            $wdhINPUT['slider_min']   = 0; // set slider min
+                                                            $wdhINPUT['slider_max']   = 99; // set slider max
+                                                            $wdhINPUT['slider_range'] = 1; // set slider step
+                                                            $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
+                                                            $wdhINPUT['second_values'] = 'none|dotted|dashed|solid|double|groove|inset|outset';
+
+                                                            // TOOLTIP
+                                                            $wdhTOOLTIP['text']     = $wdhSVWE['BOX_BORDER_INFO'];
+                                                            $wdhTOOLTIP['position'] = 'right';
+                                                            // FILTER
+                                                            $wdhFILTER['is_required']     = true;
+                                                            //$elementID = $wdhPath;
+                                                            if ($category == 'normal') {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                            } else {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                            }
+
+                                                            // DISPLAY
+                    array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
+                    array_push($settingsHTML, ' </div>');
+                    array_push($settingsHTML, '</li>');
+                    // Box-Border - END
+
+                     // Box-Border-Color - START
+                    array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
+                    array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['BOX_BORDER_COLOR'].':</label>');
+                    array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
+                                                            $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
+                                                            $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'box_border_color';
+                                                            $wdhFIELD['json_value'] = '';
+                                                            $wdhFIELD['value']      = '';
+                                                            $wdhFIELD['edit']       = true;
+
+
+                                                            $wdhINPUT['type']   = 'colorpicker';
+
+                                                            // TOOLTIP
+                                                            $wdhTOOLTIP['text']     = $wdhSVWE['BOX_BORDER_COLOR_INFO'];
+                                                            $wdhTOOLTIP['position'] = 'right';
+                                                            // FILTER
+                                                            $wdhFILTER['is_required']     = true;
+                                                            //$elementID = $wdhPath;
+                                                            if ($category == 'normal') {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border-color:#\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border-color:#\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                            } else {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border-color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border-color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border-color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border-color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                            }
+
+                                                            // DISPLAY
+                    array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
+                    array_push($settingsHTML, ' </div>');
+                    array_push($settingsHTML, '</li>');
+                    // Box-Border-Color - END
+
+                    // Box-Border-Radius - START
+                    array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
+                    array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['BOX_BORDER_RADIUS'].':</label>');
+                    array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
+                                                            $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
+                                                            $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'box_border_radius';
+                                                            $wdhFIELD['json_value'] = '';
+                                                            $wdhFIELD['value']      = '';
+                                                            $wdhFIELD['edit']       = true;
+
+
+                                                            $wdhINPUT['type'] = 'size';
+                                                            $wdhINPUT['slider_min']   = 0; // set slider min
+                                                            $wdhINPUT['slider_max']   = 500; // set slider max
+                                                            $wdhINPUT['slider_range'] = 1; // set slider step
+                                                            $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
+
+                                                            // TOOLTIP
+                                                            $wdhTOOLTIP['text']     = $wdhSVWE['BOX_BORDER_RADIUS_INFO'];
+                                                            $wdhTOOLTIP['position'] = 'right';
+                                                            // FILTER
+                                                            $wdhFILTER['is_required']     = true;
+                                                            //$elementID = $wdhPath;
+                                                            if ($category == 'normal') {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border-radius:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border-radius:\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                            } else {
+                                                                $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border-radius: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border-radius: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                                $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border-radius: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border-radius: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                            }
+
+                                                            // DISPLAY
+                    array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
+                    array_push($settingsHTML, ' </div>');
+                    array_push($settingsHTML, '</li>');
+                    // Box-Border-Radius - END
+
+                    break;
                 
-                // Box - General Settings
-                 
-                
-                // Box-Width- START
-                array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
-                array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['BOX_WIDTH'].':</label>');
-                array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
-                                                        $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
-                                                        $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'box_width';
-                                                        $wdhFIELD['json_value'] = '';
-                                                        $wdhFIELD['value']      = '';
-                                                        $wdhFIELD['edit']       = true;
-                                                        
-                                                        
-                                                        $wdhINPUT['type'] = 'size';
-                                                        $wdhINPUT['slider_min']   = 0; // set slider min
-                                                        $wdhINPUT['slider_max']   = 1200; // set slider max
-                                                        $wdhINPUT['slider_range'] = 1; // set slider step
-                                                        $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
-                                                        
-                                                        // TOOLTIP
-                                                        $wdhTOOLTIP['text']     = $wdhSVWE['BOX_WIDTH_INFO'];
-                                                        $wdhTOOLTIP['position'] = 'right';
-                                                        // FILTER
-                                                        $wdhFILTER['is_required']     = true;
-                                                        //$elementID = $wdhPath;
-                                                        if ($category == 'normal') {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"width:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"width:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                        } else {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ width: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ width: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ width: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ width: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                        }
-                                                        
-                                                        // DISPLAY
-                array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
-                array_push($settingsHTML, ' </div>');
-                array_push($settingsHTML, '</li>');
-                // Box-Width END
-                
-                // Box-Height- START
-                array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
-                array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['BOX_HEIGHT'].':</label>');
-                array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
-                                                        $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
-                                                        $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'box_height';
-                                                        $wdhFIELD['json_value'] = '';
-                                                        $wdhFIELD['value']      = '';
-                                                        $wdhFIELD['edit']       = true;
-                                                        
-                                                        
-                                                        $wdhINPUT['type'] = 'size';
-                                                        $wdhINPUT['slider_min']   = 0; // set slider min
-                                                        $wdhINPUT['slider_max']   = 1200; // set slider max
-                                                        $wdhINPUT['slider_range'] = 1; // set slider step
-                                                        $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
-                                                        
-                                                        // TOOLTIP
-                                                        $wdhTOOLTIP['text']     = $wdhSVWE['BOX_HEIGHT_INFO'];
-                                                        $wdhTOOLTIP['position'] = 'right';
-                                                        // FILTER
-                                                        $wdhFILTER['is_required']     = true;
-                                                        //$elementID = $wdhPath;
-                                                        if ($category == 'normal') {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"height:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"height:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                        } else {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ height: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ height: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ height: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ height: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                        }
-                                                        
-                                                        // DISPLAY
-                array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
-                array_push($settingsHTML, ' </div>');
-                array_push($settingsHTML, '</li>');
-                // Box-Height END
-                
-                // Box-Border - START
-                array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
-                array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['BOX_BORDER'].':</label>');
-                array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
-                                                        $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
-                                                        $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'box_border';
-                                                        $wdhFIELD['json_value'] = '';
-                                                        $wdhFIELD['value']      = '';
-                                                        $wdhFIELD['edit']       = true;
-                                                        
-                                                        
-                                                        $wdhINPUT['type'] = 'border';
-                                                        $wdhINPUT['slider_min']   = 0; // set slider min
-                                                        $wdhINPUT['slider_max']   = 99; // set slider max
-                                                        $wdhINPUT['slider_range'] = 1; // set slider step
-                                                        $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
-                                                        $wdhINPUT['second_values'] = 'none|dotted|dashed|solid|double|groove|inset|outset';
-                                                        
-                                                        // TOOLTIP
-                                                        $wdhTOOLTIP['text']     = $wdhSVWE['BOX_BORDER_INFO'];
-                                                        $wdhTOOLTIP['position'] = 'right';
-                                                        // FILTER
-                                                        $wdhFILTER['is_required']     = true;
-                                                        //$elementID = $wdhPath;
-                                                        if ($category == 'normal') {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                        } else {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                        }
-                                                        
-                                                        // DISPLAY
-                array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
-                array_push($settingsHTML, ' </div>');
-                array_push($settingsHTML, '</li>');
-                // Box-Border - END
-                
-                 // Box-Border-Color - START
-                array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
-                array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['BOX_BORDER_COLOR'].':</label>');
-                array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
-                                                        $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
-                                                        $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'box_border_color';
-                                                        $wdhFIELD['json_value'] = '';
-                                                        $wdhFIELD['value']      = '';
-                                                        $wdhFIELD['edit']       = true;
-                                                        
-                                                        
-                                                        $wdhINPUT['type']   = 'colorpicker';
-                                                        
-                                                        // TOOLTIP
-                                                        $wdhTOOLTIP['text']     = $wdhSVWE['BOX_BORDER_COLOR_INFO'];
-                                                        $wdhTOOLTIP['position'] = 'right';
-                                                        // FILTER
-                                                        $wdhFILTER['is_required']     = true;
-                                                        //$elementID = $wdhPath;
-                                                        if ($category == 'normal') {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border-color:#\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border-color:#\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                        } else {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border-color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border-color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border-color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border-color: #\"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                        }
-                                                        
-                                                        // DISPLAY
-                array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
-                array_push($settingsHTML, ' </div>');
-                array_push($settingsHTML, '</li>');
-                // Box-Border-Color - END
-                
-                // Box-Border-Radius - START
-                array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
-                array_push($settingsHTML, ' <label class="wdh-label-left">'.$wdhSVWE['BOX_BORDER_RADIUS'].':</label>');
-                array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
-                                                        $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
-                                                        $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').'box_border_radius';
-                                                        $wdhFIELD['json_value'] = '';
-                                                        $wdhFIELD['value']      = '';
-                                                        $wdhFIELD['edit']       = true;
-                                                        
-                                                        
-                                                        $wdhINPUT['type'] = 'size';
-                                                        $wdhINPUT['slider_min']   = 0; // set slider min
-                                                        $wdhINPUT['slider_max']   = 500; // set slider max
-                                                        $wdhINPUT['slider_range'] = 1; // set slider step
-                                                        $wdhINPUT['values'] = 'px|em|%|in|cm|mm|ex|pt|pc';
-                                                        
-                                                        // TOOLTIP
-                                                        $wdhTOOLTIP['text']     = $wdhSVWE['BOX_BORDER_RADIUS_INFO'];
-                                                        $wdhTOOLTIP['position'] = 'right';
-                                                        // FILTER
-                                                        $wdhFILTER['is_required']     = true;
-                                                        //$elementID = $wdhPath;
-                                                        if ($category == 'normal') {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border-radius:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"border-radius:\"+window.valueNow+\"'.$importantCSS.';\"});';
-                                                        } else {
-                                                            $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border-radius: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border-radius: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                            $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ border-radius: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ border-radius: \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
-                                                        }
-                                                        
-                                                        // DISPLAY
-                array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
-                array_push($settingsHTML, ' </div>');
-                array_push($settingsHTML, '</li>');
-                // Box-Border-Radius - END
-              
-                
-            } else {
-                array_push($settingsHTML, 'done');
+                default:
+                    $extraGroups = (object)json_decode(str_replace("'",'"',$wdhSVWE['WDH_SVWE_EXTRA_GROUPS']));
+                    $extraFields = $wdhSVWE['WDH_SVWE_EXTRA_FIELDS'];
+                    
+                    if (!empty($extraGroups)) {
+                        $ext = 0;
+                        
+                        foreach($extraGroups as $key => $value){
+                            $groupName = $extraGroups->{$key}->name;
+                            
+                            if (!empty($extraFields)) {
+                                $extraFieldSelected = $extraFields[$groupName];
+                                
+                                if (!empty($extraFieldSelected)) {
+                                    foreach($extraFieldSelected as $subkey => $subvalue){
+
+                                        // START
+                                        array_push($settingsHTML, '<li class="wdh-settings-'.$category.'-'.$type.'-'.$subtype.'">');
+                                        array_push($settingsHTML, ' <label class="wdh-label-left">'.$extraFieldSelected[$subkey]['label'].':</label>');
+                                        array_push($settingsHTML, ' <div class="wdh-input-field wdh-input-left">');
+                                                                                $wdhDB['table'] = WDHSVWE_Temporary_CSS_table;
+                                                                                $wdhFIELD['field_name'] = ($category == 'normal'? '':'h_').$extraFieldSelected[$subkey]['name'];
+                                                                                $wdhFIELD['json_value'] = '';
+                                                                                $wdhFIELD['value']      = '';
+                                                                                $wdhFIELD['edit']       = true;
+
+
+                                                                                $wdhINPUT['type']   = $extraFieldSelected[$subkey]['type'];
+                                                                                
+                                                                                if(isset($extraFieldSelected[$subkey]['min'])) {
+                                                                                    $wdhINPUT['slider_min']   = $extraFieldSelected[$subkey]['min']; // set slider min
+                                                                                }
+                                                                                
+                                                                                if(isset($extraFieldSelected[$subkey]['max'])) {
+                                                                                    $wdhINPUT['slider_max']   = $extraFieldSelected[$subkey]['max']; // set slider max
+                                                                                }
+                                                                                
+                                                                                if(isset($extraFieldSelected[$subkey]['range'])) {
+                                                                                    $wdhINPUT['slider_range']   = $extraFieldSelected[$subkey]['range']; // set slider range
+                                                                                }
+                                                                                
+                                                                                if(isset($extraFieldSelected[$subkey]['values'])) {
+                                                                                    $wdhINPUT['values'] = $extraFieldSelected[$subkey]['values'];
+                                                                                }
+                                                                                
+                                                                                // TOOLTIP
+                                                                                $wdhTOOLTIP['text']     = $extraFieldSelected[$subkey]['info'];
+                                                                                $wdhTOOLTIP['position'] = 'right';
+                                                                                // FILTER
+                                                                                $wdhFILTER['is_required']     = true;
+                                                                                $webkit      = '';
+                                                                                $webkithover = '';
+                                                                                
+                                                                                if (isset($extraFieldSelected[$subkey]['css_web_kit'])) {
+                                                                                    
+                                                                                    if ($extraFieldSelected[$subkey]['css_web_kit'] == true) {
+                                                                                        $webkit = '-webkit-'.$extraFieldSelected[$subkey]['css'].':\"+window.valueNow+\"'.$importantCSS.';';
+                                                                                        $webkithover = '-webkit-'.$extraFieldSelected[$subkey]['css'].': \"+window.valueNow+\"'.$importantCSS.';\"+\";';
+                                                                                    }
+                                                                                }
+                                                                                
+                                                                                if ($category == 'normal') {// 
+                                                                                    $wdhINPUT['js_wdhedfp_after_save'] = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"'.$webkit.$extraFieldSelected[$subkey]['css'].':\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                                                    $wdhINPUT['js_wdhedfp_onchange']   = '$jWDH('.$elementSelected.').attr(\"style\", function(i,s) { if(typeof s === undefined || s === undefined) { s = \"\"; } return s + \"'.$webkit.$extraFieldSelected[$subkey]['css'].':\"+window.valueNow+\"'.$importantCSS.';\"});';
+                                                                                } else {
+                                                                                    $wdhINPUT['js_wdhedfp_after_save'] = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ '.$webkithover.$extraFieldSelected[$subkey]['css'].': \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ '.$webkithover.$extraFieldSelected[$subkey]['css'].': \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                                                    $wdhINPUT['js_wdhedfp_onchange']   = 'var currentDomPath = wdhRemover($jWDH('.$elementSelected.').getDomPath()), currentWDHPath = $jWDH('.$elementSelected.').getDomPath(); $jWDH(\"head\").append(\"<style>\"+currentDomPath+\":hover{ '.$webkithover.$extraFieldSelected[$subkey]['css'].': \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\"); $jWDH(\"head\").append(\"<style>\"+currentWDHPath+\":hover{ '.$webkithover.$extraFieldSelected[$subkey]['css'].': \"+window.valueNow+\"'.$importantCSS.';\"+\"; }</style>\");';
+                                                                                }
+
+                                                                                // DISPLAY
+                                        array_push($settingsHTML ,               $WDH_EDFP->wdhShowField($wdhDB,$wdhFIELD,$wdhINPUT,$wdhTOOLTIP,$wdhFILTER,$wdhERROR,$wdhUPLOAD));
+                                        array_push($settingsHTML, ' </div>');
+                                        array_push($settingsHTML, '</li>');
+                                        // END
+
+                                    }
+                                }
+                            }
+                            
+                            $ext++;
+                        }
+                        
+                        if($ext < 1) {
+                            array_push($settingsHTML, 'done');
+                        }
+                    } else {
+                        array_push($settingsHTML, 'done');
+                    }
+                    break;
             }
             
             echo implode('', $settingsHTML); die();

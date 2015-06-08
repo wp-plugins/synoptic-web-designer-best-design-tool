@@ -85,5 +85,10 @@ If you want to test and see how works form created with our plugin all you have 
 
 == Changelog ==
 
+= 1.1 =
+* debug class - added
+* extend class - added
+* google fonts - added
+
 = 1.0 =
 * Initial release.

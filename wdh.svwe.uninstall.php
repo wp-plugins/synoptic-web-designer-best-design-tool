@@ -1,7 +1,7 @@
 <?php
 
 /*
-* Title                   : Synoptic Web Designer: best WordPress design tool Light
+* Title                   : Synoptic Web Designer: best WordPress design tool
 * Version                 : 1.0
 * File                    : wdh.svwe.uninstall.php
 * File Version            : 1.0

@@ -1,9 +1,9 @@
 <?php
 
 /* -------------------------------------------------------------------
- * Project Name: Synoptic Web Designer: best WordPress design tool Light
+ * Project Name: Synoptic Web Designer: best WordPress design tool
  * Project Version: 1.0
- * Project URL: http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool-light/
+ * Project URL: http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool/
  * Author: WDH - Web Developers House
  * Author URL: http://www.wdh.im/
  * File: wdh.svwe.main.php
@@ -335,6 +335,12 @@ if (!class_exists("wdhSVWE")) {
             
             if ($this->userIsAdmin()){// admin.  
                 array_push($headHTML, '<style>');
+                // Import Google Fonts
+                $wdhGFonts = $wdhSVWE_CSS->getGoogleFonts();
+
+                if ($wdhGFonts != "") {
+                    array_push($headHTML, '@import url("http://fonts.googleapis.com/css?family='.$wdhGFonts.'");');
+                }
                 array_push($headHTML, $wdhSVWE_CSS->generateCSSTemp());
                 array_push($headHTML, '</style>');
                 array_push($headHTML, '<!-- SWE: Translation JS -->');
@@ -484,8 +490,15 @@ if (!class_exists("wdhSVWE")) {
                 }
                 
                 // Languages && JS Settings
-                if (strpos($key,'TXT_') !== false || strpos($key,'BOX_') !== false || strpos($key,'WDH_DEFAULT_') !== false) {
-                    array_push ($languageHTML, 'window.'.$key.' = "'.$value.'";');
+                if (strpos($key,'TXT_') !== false || strpos($key,'BOX_') !== false || strpos($key,'WDH_DEFAULT_') !== false || strpos($key,'ICON_') !== false || strpos($key,'WDH_SVWE_EXTRA_GROUPS') !== false) {
+                    if (strpos($key,'WDH_SVWE_EXTRA_GROUPS') !== false) {
+                        
+                        if ($value != '') {
+                            array_push ($languageHTML, 'window.'.$key.' = '.$value.';');
+                        }
+                    } else {
+                        array_push ($languageHTML, 'window.'.$key.' = "'.$value.'";');
+                    }
                 }
             }
             
@@ -688,10 +701,10 @@ if (!class_exists("wdhSVWE")) {
                     h_box_padding_bottom VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_padding_right VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_padding_left VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_margin_top VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_margin_bottom VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_margin_right VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_margin_left VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_margin_top VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_margin_bottom VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_margin_right VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_margin_left VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_border VARCHAR(23) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_border_top VARCHAR(23) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_border_bottom VARCHAR(23) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
@@ -723,10 +736,10 @@ if (!class_exists("wdhSVWE")) {
                     h_box_min_height VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_max_height VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_position VARCHAR(13) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_top VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_bottom VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_right VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_left VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_top VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_bottom VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_right VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_left VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_clip VARCHAR(13) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_overflow VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_z_index VARCHAR(13) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
@@ -820,10 +833,10 @@ if (!class_exists("wdhSVWE")) {
                     box_padding_bottom VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     box_padding_right VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     box_padding_left VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    box_margin_top VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    box_margin_bottom VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    box_margin_right VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    box_margin_left VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    box_margin_top VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    box_margin_bottom VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    box_margin_right VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    box_margin_left VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     box_border VARCHAR(23) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     box_border_top VARCHAR(23) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     box_border_bottom VARCHAR(23) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
@@ -855,10 +868,10 @@ if (!class_exists("wdhSVWE")) {
                     box_min_height VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     box_max_height VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     box_position VARCHAR(13) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    box_top VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    box_bottom VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    box_right VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    box_left VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    box_top VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    box_bottom VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    box_right VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    box_left VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     box_clip VARCHAR(13) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     box_overflow VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     box_z_index VARCHAR(13) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
@@ -911,10 +924,10 @@ if (!class_exists("wdhSVWE")) {
                     h_box_padding_bottom VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_padding_right VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_padding_left VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_margin_top VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_margin_bottom VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_margin_right VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_margin_left VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_margin_top VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_margin_bottom VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_margin_right VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_margin_left VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_border VARCHAR(23) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_border_top VARCHAR(23) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_border_bottom VARCHAR(23) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
@@ -946,10 +959,10 @@ if (!class_exists("wdhSVWE")) {
                     h_box_min_height VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_max_height VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_position VARCHAR(13) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_top VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_bottom VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_right VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
-                    h_box_left VARCHAR(12) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_top VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_bottom VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_right VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
+                    h_box_left VARCHAR(11) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_clip VARCHAR(13) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_overflow VARCHAR(10) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
                     h_box_z_index VARCHAR(13) DEFAULT '' COLLATE utf8_unicode_ci NOT NULL,
@@ -985,12 +998,19 @@ if (!class_exists("wdhSVWE")) {
                 dbDelta($css_temp);
                 
                 // Creating files directory
-                mkdir(WP_CONTENT_DIR.'/wdhsvwe/',0775);
-                // Creating CSS directory
-                mkdir(WP_CONTENT_DIR.'/wdhsvwe/css/',0775);
+                if(!file_exists(WP_CONTENT_DIR.'/wdhsvwe/')) {
+                    mkdir(WP_CONTENT_DIR.'/wdhsvwe/',0775);
 
-                // Move Uploads Directory
-                $this->moveFiles(WDHSVWE_Path.'wdhedfp/uploads/', WP_CONTENT_DIR.'/wdhsvwe/uploads/');
+                    if(!file_exists(WP_CONTENT_DIR.'/wdhsvwe/uploads/')) {
+                        // Move Uploads Directory
+                        $this->moveFiles(WDHSVWE_Path.'wdhedfp/uploads/', WP_CONTENT_DIR.'/wdhsvwe/uploads/');
+                    }
+                }
+                
+                // Creating CSS directory
+                if(!file_exists(WP_CONTENT_DIR.'/wdhsvwe/css/')) {
+                    mkdir(WP_CONTENT_DIR.'/wdhsvwe/css/',0775);
+                }
 
                 if ($db_version != $wdhSVWE["version"]){
 
@@ -1026,6 +1046,15 @@ if (!class_exists("wdhSVWE")) {
             $page = str_replace('&wdhResolution=1280','',$page);
             
             return $page;
+        }
+        
+        function modifyFile($file){
+            $file_contents = file_get_contents($file);
+
+            $fh = fopen($file, "w");
+            $file_contents = str_replace('plugins/wdhsvwe/wdhedfp/','wdhsvwe/',$file_contents);
+            fwrite($fh, $file_contents);
+            fclose($fh);
         }
         
         function settingsAdd(){
@@ -1420,10 +1449,37 @@ if (!class_exists("wdhSVWE")) {
             $dateCreated        = date('Y-m-d');
             $timeCreated        = date('H:i:s');
             $fieldsAll          = '';
+            $extraFieldsDB      = '';
             $dateTimeCreated = $dateCreated.' '.$timeCreated;
             list($hours, $minutes, $seconds) = explode(':', $timeCreated);
             $dateTime = \DateTime::createFromFormat('Y-m-d', $dateCreated)->setTime($hours, $minutes, $seconds); // \DateTime::createFromFormat('Y-m-d', $dateCreated)->setTime($hours, $minutes, $seconds);
             $unixDateCreated = $dateTime->getTimestamp();
+            
+            $extraGroups = (object)json_decode(str_replace("'",'"',$wdhSVWE['WDH_SVWE_EXTRA_GROUPS']));
+            $extraFields = $wdhSVWE['WDH_SVWE_EXTRA_FIELDS'];
+
+            if (!empty($extraGroups)) {
+                $ext = 0;
+
+                foreach($extraGroups as $key => $value){
+                    $groupName = $extraGroups->{$key}->name;
+
+                    if (!empty($extraFields)) {
+                        $extraFieldSelected = $extraFields[$groupName];
+
+                        if (!empty($extraFieldSelected)) {
+                            
+                            foreach($extraFieldSelected as $subkey => $subvalue){
+                                
+                                $extraFieldsDB .= ','.$extraFieldSelected[$subkey]['name'];
+                                $extraFieldsDB .= ',h_'.$extraFieldSelected[$subkey]['name'];
+                            }
+                        }
+                    }
+
+                    $ext++;
+                }
+            }
 
             // UPDATE/INSERT All CSS PROPERTIES
             // ---------------------------------------------------------
@@ -2185,6 +2241,42 @@ if (!class_exists("wdhSVWE")) {
                         $rowAll['h_box_list_style_position'] = $checkElement['h_box_list_style_position'];
                     }
                     $fieldsAll .= "h_box_list_style_position='".$rowAll['h_box_list_style_position']."',";
+                    
+                    
+                    
+                    $extraGroups = (object)json_decode(str_replace("'",'"',$wdhSVWE['WDH_SVWE_EXTRA_GROUPS']));
+                    $extraFields = $wdhSVWE['WDH_SVWE_EXTRA_FIELDS'];
+
+                    if (!empty($extraGroups)) {
+                        $ext = 0;
+
+                        foreach($extraGroups as $key => $value){
+                            $groupName = $extraGroups->{$key}->name;
+
+                            if (!empty($extraFields)) {
+                                $extraFieldSelected = $extraFields[$groupName];
+
+                                if (!empty($extraFieldSelected)) {
+
+                                    foreach($extraFieldSelected as $subkey => $subvalue){
+                    
+                                        if(strpos($rowAll['h_'.$extraFieldSelected[$subkey]['name']],'m@@') === false){
+                                            $rowAll['h_'.$extraFieldSelected[$subkey]['name']] = $checkElement['h_'.$extraFieldSelected[$subkey]['name']];
+                                        }
+                                        $fieldsAll .= "h_".$extraFieldSelected[$subkey]['name']."='".$rowAll['h_'.$extraFieldSelected[$subkey]['name']]."',";
+                    
+                                        if(strpos($rowAll[$extraFieldSelected[$subkey]['name']],'m@@') === false){
+                                            $rowAll[$extraFieldSelected[$subkey]['name']] = $checkElement[$extraFieldSelected[$subkey]['name']];
+                                        }
+                                        $fieldsAll .= $extraFieldSelected[$subkey]['name']."='".$rowAll[$extraFieldSelected[$subkey]['name']]."',";
+                                    }
+                                }
+                            }
+
+                            $ext++;
+                        }
+                    }
+                    
                     $fieldsAll .= "unix_created_date='".$unixDateCreated."'";
 
                     // UPDATE
@@ -2192,7 +2284,7 @@ if (!class_exists("wdhSVWE")) {
                     $wpdb->query($updateElement);
                     $added++;
                 } else {
-                    $fieldsAll .= "(wid,used_for,container_full_path,container_wdh_path,container_classes,container_id,element_tag,element_position,resolution,page_url,page_on,role,text_color,text_font_size,text_font_family,text_font_weight,text_font_style,text_font_variant,text_font_line_height,text_font_align,text_font_decoration,text_font_transform,text_font_letter_spacing,text_font_word_spacing,text_font_vertical_align,text_font_white_space,box_background_color,box_width,box_height,box_background_image,box_background_size,box_background_position_x,box_background_position_y,box_background_repeat,box_padding_top,box_padding_bottom,box_padding_left,box_padding_right,box_margin_top,box_margin_bottom,box_margin_left,box_margin_right,box_border,box_border_color,box_border_radius,box_outline,box_outline_color,box_position,box_top,box_bottom,box_left,box_right,box_overflow,box_z_index,box_float,box_clear,box_display,box_visibility,box_border_collapse,box_caption_side,box_content,box_page_break_before,box_page_break_after,box_page_break_inside,box_orfans,box_windows,box_cursor,box_direction,box_border_top,box_border_bottom,box_border_left,box_border_right,box_border_top_color,box_border_bottom_color,box_border_left_color,box_border_right_color,box_border_top_left_radius,box_border_bottom_left_radius,box_border_top_right_radius,box_border_bottom_right_radius,box_min_width,box_max_width,box_min_height,box_max_height,box_list_style_type,box_list_style_position,h_text_color,h_text_font_size,h_text_font_family,h_text_font_weight,h_text_font_style,h_text_font_variant,h_text_font_line_height,h_text_font_align,h_text_font_decoration,h_text_font_transform,h_text_font_letter_spacing,h_text_font_word_spacing,h_text_font_vertical_align,h_text_font_white_space,h_box_background_color,h_box_width,h_box_height,h_box_background_image,h_box_background_size,h_box_background_position_x,h_box_background_position_y,h_box_background_repeat,h_box_padding_top,h_box_padding_bottom,h_box_padding_left,h_box_padding_right,h_box_margin_top,h_box_margin_bottom,h_box_margin_left,h_box_margin_right,h_box_border,h_box_border_color,h_box_border_radius,h_box_outline,h_box_outline_color,h_box_position,h_box_top,h_box_bottom,h_box_left,h_box_right,h_box_overflow,h_box_z_index,h_box_float,h_box_clear,h_box_display,h_box_visibility,h_box_border_collapse,h_box_caption_side,h_box_content,h_box_page_break_before,h_box_page_break_after,h_box_page_break_inside,h_box_orfans,h_box_windows,h_box_cursor,h_box_direction,h_box_border_top,h_box_border_bottom,h_box_border_left,h_box_border_right,h_box_border_top_color,h_box_border_bottom_color,h_box_border_left_color,h_box_border_right_color,h_box_border_top_left_radius,h_box_border_bottom_left_radius,h_box_border_top_right_radius,h_box_border_bottom_right_radius,h_box_min_width,h_box_max_width,h_box_min_height,h_box_max_height,h_box_list_style_type,h_box_list_style_position,unix_created_date) VALUES(";
+                    $fieldsAll .= "(wid,used_for,container_full_path,container_wdh_path,container_classes,container_id,element_tag,element_position,resolution,page_url,page_on,role,text_color,text_font_size,text_font_family,text_font_weight,text_font_style,text_font_variant,text_font_line_height,text_font_align,text_font_decoration,text_font_transform,text_font_letter_spacing,text_font_word_spacing,text_font_vertical_align,text_font_white_space,box_background_color,box_width,box_height,box_background_image,box_background_size,box_background_position_x,box_background_position_y,box_background_repeat,box_padding_top,box_padding_bottom,box_padding_left,box_padding_right,box_margin_top,box_margin_bottom,box_margin_left,box_margin_right,box_border,box_border_color,box_border_radius,box_outline,box_outline_color,box_position,box_top,box_bottom,box_left,box_right,box_overflow,box_z_index,box_float,box_clear,box_display,box_visibility,box_border_collapse,box_caption_side,box_content,box_page_break_before,box_page_break_after,box_page_break_inside,box_orfans,box_windows,box_cursor,box_direction,box_border_top,box_border_bottom,box_border_left,box_border_right,box_border_top_color,box_border_bottom_color,box_border_left_color,box_border_right_color,box_border_top_left_radius,box_border_bottom_left_radius,box_border_top_right_radius,box_border_bottom_right_radius,box_min_width,box_max_width,box_min_height,box_max_height,box_list_style_type,box_list_style_position,h_text_color,h_text_font_size,h_text_font_family,h_text_font_weight,h_text_font_style,h_text_font_variant,h_text_font_line_height,h_text_font_align,h_text_font_decoration,h_text_font_transform,h_text_font_letter_spacing,h_text_font_word_spacing,h_text_font_vertical_align,h_text_font_white_space,h_box_background_color,h_box_width,h_box_height,h_box_background_image,h_box_background_size,h_box_background_position_x,h_box_background_position_y,h_box_background_repeat,h_box_padding_top,h_box_padding_bottom,h_box_padding_left,h_box_padding_right,h_box_margin_top,h_box_margin_bottom,h_box_margin_left,h_box_margin_right,h_box_border,h_box_border_color,h_box_border_radius,h_box_outline,h_box_outline_color,h_box_position,h_box_top,h_box_bottom,h_box_left,h_box_right,h_box_overflow,h_box_z_index,h_box_float,h_box_clear,h_box_display,h_box_visibility,h_box_border_collapse,h_box_caption_side,h_box_content,h_box_page_break_before,h_box_page_break_after,h_box_page_break_inside,h_box_orfans,h_box_windows,h_box_cursor,h_box_direction,h_box_border_top,h_box_border_bottom,h_box_border_left,h_box_border_right,h_box_border_top_color,h_box_border_bottom_color,h_box_border_left_color,h_box_border_right_color,h_box_border_top_left_radius,h_box_border_bottom_left_radius,h_box_border_top_right_radius,h_box_border_bottom_right_radius,h_box_min_width,h_box_max_width,h_box_min_height,h_box_max_height,h_box_list_style_type,h_box_list_style_position".$extraFieldsDB.",unix_created_date) VALUES(";
                     $fieldsAll .= "'".$wid."','".$wdhPublishFor."','".$domPath."','".$wdhPath."','".$wdhClass."','".$wdhID."','".$elementTag."','".$elementPosition."','".$resolution."','".$wdhPageUrl."','".$wdhPageOn."','".$wdhRole."',";
                     $fieldsAll .= "'".$rowAll['text_color']."',";
                     $fieldsAll .= "'".$rowAll['text_font_size']."',";
@@ -2342,6 +2434,32 @@ if (!class_exists("wdhSVWE")) {
                     $fieldsAll .= "'".$rowAll['h_box_max_height']."',";
                     $fieldsAll .= "'".$rowAll['h_box_list_style_type']."',";
                     $fieldsAll .= "'".$rowAll['h_box_list_style_position']."',";
+                    
+                    $extraGroups = (object)json_decode(str_replace("'",'"',$wdhSVWE['WDH_SVWE_EXTRA_GROUPS']));
+                    $extraFields = $wdhSVWE['WDH_SVWE_EXTRA_FIELDS'];
+
+                    if (!empty($extraGroups)) {
+                        $ext = 0;
+
+                        foreach($extraGroups as $key => $value){
+                            $groupName = $extraGroups->{$key}->name;
+
+                            if (!empty($extraFields)) {
+                                $extraFieldSelected = $extraFields[$groupName];
+
+                                if (!empty($extraFieldSelected)) {
+
+                                    foreach($extraFieldSelected as $subkey => $subvalue){
+                                        $fieldsAll .= "'".$rowAll[$extraFieldSelected[$subkey]['name']]."',";
+                                        $fieldsAll .= "'".$rowAll['h_'.$extraFieldSelected[$subkey]['name']]."',";
+                                    }
+                                }
+                            }
+
+                            $ext++;
+                        }
+                    }
+                    
                     $fieldsAll .= "'".$unixDateCreated."')";
 
                     // INSERT
@@ -2402,6 +2520,12 @@ if (!class_exists("wdhSVWE")) {
                 $wdhPhublishForIs = $wdhPublishFor;
             }
             $styleFile = WP_CONTENT_DIR."/wdhsvwe/css/style.".$wdhPhublishForIs.".".$wdhPageOn.".".$wdhRole.".".$unixDateCreated.".min.css";
+            
+            $fonts = $wdhSVWE_CSS->getGoogleFonts(WDHSVWE_CSS_table);
+            
+            if($fonts != '') {
+                array_push($styleData, '@import url("http://fonts.googleapis.com/css?family='.$fonts.'");');
+            }
             
             array_push($styleData, $wdhSVWE_CSS->generateCSSMin(WDHSVWE_CSS_table));
             

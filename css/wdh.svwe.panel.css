@@ -181,34 +181,84 @@
     margin:0px;
     padding:0px;
     padding-top:8px;
-    padding-left:18px;
     padding-bottom:8px;
     border-bottom:1px solid #fccf1b;
 }
 
-.wdh-panel .wdh-panel-middle .wdh-types .wdh-elemnt-type{
-    float:left;
-    margin:0px;
-    padding:0px;
-    padding-right:7px;
-    color:#989898;
+.wdh-panel .wdh-panel-middle .wdh-types li{  
+    background-color: #2a2929;
+    -webkit-transition: background-color 800ms linear;
+    -moz-transition: background-color 800ms linear;
+    -o-transition: background-color 800ms linear;
+    transition: background-color 800ms linear;
+    float: left;
+    margin: 0 0 0 5px;
+    padding: 0px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: #313131;
+    position: relative;
+    list-style: none;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-types li:hover,
+.wdh-panel .wdh-panel-middle .wdh-types li.element-type-selected{
+    background-color:#fccf1b;
+    color:#fff;
     font-family:'Open Sans';
     font-size:14px;
     line-height:14px;
     cursor:pointer;
 }
 
-.wdh-panel .wdh-panel-middle .wdh-types .element-type-selected{
-    float:left;
-    margin:0px;
-    padding:0px;
-    padding-right:7px;
-    color:#000;
-    font-family:'Open Sans';
-    font-size:14px;
-    line-height:14px;
-    border-left:none;
-    cursor:pointer;
+.wdh-panel .wdh-panel-middle .wdh-types li span{
+    display: none;
+    background-color: #000 !important;
+    padding: 10px !important;
+    position: absolute !important;
+    top: 32px !important;
+    opacity: 1 !important;
+    color: #f8dc6b !important;
+    left: 0px;
+    z-index: 9 !important;
+    min-width: 80px;
+    max-width: 240px !important;
+    border-radius: 0px !important;
+    font-size: 12px !important;
+    text-align: center !important;
+    line-height: 14px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    text-transform: capitalize !important;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-types li:hover span{
+    display:block;
+}
+
+/* ICONS */
+.wdh-panel .wdh-panel-middle .wdh-types li.icon-text-settings{
+    background: #313131 url("../images/sprite_panel.png");
+    background-position: -49px 0px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-types li.icon-text-settings:hover,
+.wdh-panel .wdh-panel-middle .wdh-types li.icon-text-settings.element-type-selected{
+    background-position: -7px 0px;
+    background-color: #fccf1b !important;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-types li.icon-box-settings{
+    background: #313131 url("../images/sprite_panel.png");
+    background-position: -44px -31px;
+}
+
+.wdh-panel .wdh-panel-middle .wdh-types li.icon-box-settings:hover,
+.wdh-panel .wdh-panel-middle .wdh-types li.icon-box-settings.element-type-selected{
+    background-position: -95px -31px;
+    background-color: #fccf1b !important;
 }
 
 .wdh-panel .wdh-panel-middle .wdh-search-properties{

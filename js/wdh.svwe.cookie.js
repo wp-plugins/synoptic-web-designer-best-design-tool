@@ -1,7 +1,7 @@
 /* -------------------------------------------------------------------
- * Project Name: Synoptic Web Designer: best WordPress design tool Light
+ * Project Name: Synoptic Web Designer: best WordPress design tool
  * Project Version: 1.0
- * Project URL: http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool-light/
+ * Project URL: http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool/
  * Author: WDH - Web Developers House
  * Author URL: http://www.wdh.im/
  * File: js/wdh.svwe.cookie.js

@@ -1,8 +1,8 @@
 <?php
 /* -------------------------------------------------------------------
- * Project Name: Synoptic Web Designer: best WordPress design tool Light
+ * Project Name: Synoptic Web Designer: best WordPress design tool
  * Project Version: 1.0
- * Project URL: http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool-light/
+ * Project URL: http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool/
  * Author: WDH - Web Developers House
  * Author URL: http://www.wdh.im/
  * File: svwe-config.php
@@ -15,7 +15,7 @@
 global $wdhSVWE;
  
 // Synoptic Version
-$wdhSVWE["version"]     = 1.0;
+$wdhSVWE["version"]     = 1.1;
  
 // Synoptic Enabled
 $wdhSVWE["ENABLED"]     = true;

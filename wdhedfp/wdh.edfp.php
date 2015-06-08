@@ -14,7 +14,8 @@
 //
 //
 //        2.7 (2014-16-11)
-//      
+//    
+//              * Google Font added     
 //              * Font Family Type added        
 //              * Border Type added
 //              * Size Type added
@@ -406,7 +407,39 @@ if (!class_exists("WdhEditFieldDb")) {
                 // DISPLAY & EDIT
                 if ($wdhFIELD['edit'] == true) {
                     
-                    if ($wdhINPUT['type'] == 'colorpicker') {
+                    // SWITCH
+                    if ($wdhINPUT['type'] == 'switch') {
+                        
+                        $turnon  = str_replace('m@@','',$this->wdhfield($wdhDB, $wdhFIELD));
+                        $checked = '';
+                        
+                        $turnon = str_replace('on','true', $turnon);
+                        $turnon = str_replace('off','false', $turnon);
+                        
+                        if ($turnon == 'true') {
+                            $checked = 'checked';
+                        }
+                        
+                        if (isset($title) || $title != '') {
+                            $tooltip = "<span class='wdh-tooltip'><span class='wdh-information'>".$title."</span></span>";
+                        }
+                        
+                        array_push($fieldHTML, '<div id="wdh-field-' . $fieldname . '-' . $wfieldvalue . '" class="onoffswitch ' . $class . '">
+                                <input id="wdh-field-switch-' . $fieldname . '-' . $wfieldvalue . '" type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" ' . $checked . '>
+                                <label class="onoffswitch-label" for="wdh-field-switch-' . $fieldname . '-' . $wfieldvalue . '">
+                                    <div class="onoffswitch-inner"></div>
+                                    <div class="onoffswitch-switch"></div>
+                                </label>
+                              </div>');
+                        array_push($fieldHTML,  '<div class="wdh-field">'.$tooltip.'</div>');
+                        array_push($fieldHTML,  "<script type='text/javascript'>
+                                var request_url = '" .admin_url('admin-ajax.php'). "';
+                                    window.website_url = '" . $wdhFIELD['WDH_WEBSITE_URL'] . "';
+                                $jWDH('#wdh-field-switch-" . $fieldname . "-" . $wfieldvalue . "').wdhEditDbFieldSwitch('" . $wdhDB_json . "','" . $wdhFIELD_json . "','" . $wdhINPUT_json . "','" . $wdhTOOLTIP_json . "','" . $wdhFILTER_json . "','" . $wdhERROR_json . "','" . $wdhUPLOAD_json . "','" . str_replace('m@@','',$this->wdhfield($wdhDB, $wdhFIELD)) . "','" . $wfieldvalue . "');
+                              </script>");
+                        
+                        // COLORPICKER
+                    } else if ($wdhINPUT['type'] == 'colorpicker') {
                         $addClass = 'wdh-colorpicker-preview';
                         $addStyle = 'background:#';
                         
@@ -421,6 +454,7 @@ if (!class_exists("WdhEditFieldDb")) {
                                     window.website_url = '" . $wdhFIELD['WDH_WEBSITE_URL'] . "';
                                 $jWDH('#wdh-field-" . $fieldname . "-" . $wfieldvalue . "').wdhEditDbFieldColorPicker('" . $wdhDB_json . "','" . $wdhFIELD_json . "','" . $wdhINPUT_json . "','" . $wdhTOOLTIP_json . "','" . $wdhFILTER_json . "','" . $wdhERROR_json . "','" . $wdhUPLOAD_json . "','" . str_replace('m@@','',$this->wdhfield($wdhDB, $wdhFIELD)) . "','" . $wfieldvalue . "');
                               </script>");
+                        // FONT   
                     } else  if ($wdhINPUT['type'] == 'font') {
                         $value = $this->wdhGFontsName(str_replace('m@@','',$this->wdhfield($wdhDB, $wdhFIELD)));
                         
@@ -441,6 +475,11 @@ if (!class_exists("WdhEditFieldDb")) {
                         
                         $value = str_replace('m@@','',$this->wdhfield($wdhDB, $wdhFIELD));
                         
+                        // CHECKBOX
+                        if ($wdhINPUT['type'] == 'checkbox') {
+                            $value = str_replace('#', ',', $value);
+                        }
+                        
                         if (isset($title) || $title != '') {
                             $tooltip = "<span class='wdh-tooltip'><span class='wdh-information'>".$title."</span></span>";
                         }
@@ -455,13 +494,60 @@ if (!class_exists("WdhEditFieldDb")) {
                     // DISPLAY ONLY
                 } else {
                     
-                    // COLORPICKER
-                    if ($wdhINPUT['type'] == 'colorpicker') {
+                    // SWITCH
+                    if ($wdhINPUT['type'] == 'switch') {
+                        
+                        $turnon  = str_replace('m@@','',$this->wdhfield($wdhDB, $wdhFIELD));
+                        $checked = '';
+                        
+                        $turnon = str_replace('on','true', $turnon);
+                        $turnon = str_replace('off','false', $turnon);
+                        
+                        if ($turnon == 'true') {
+                            $checked = 'checked';
+                        }
+                        
+                        echo '<div id="wdh-field-' . $fieldname . '-' . $wfieldvalue . '" class="onoffswitch ' . $class . '">
+                                <input id="wdh-field-switch-' . $fieldname . '-' . $wfieldvalue . '" type="checkbox" disabled="disabled" name="onoffswitch" class="onoffswitch-checkbox" ' . $checked . '>
+                                <label class="onoffswitch-label" style="cursor:inherit;" for="wdh-field-switch-' . $fieldname . '-' . $wfieldvalue . '">
+                                    <div class="onoffswitch-inner"></div>
+                                    <div class="onoffswitch-switch"></div>
+                                </label>
+                              </div>';
+                        
+                        // COLORPICKER
+                    } else if ($wdhINPUT['type'] == 'colorpicker') {
                         $addClass = 'wdh-colorpicker-preview';
                         $addStyle = 'background:#';
                         echo "<span id='wdh-field-" . $fieldname . "-" . $wfieldvalue . "' class='wdh-field " . $class . " " . $addClass . "' style='" . $addStyle . str_replace('m@@','',$this->wdhfield($wdhDB, $wdhFIELD)) . ";cursor:inherit;'>&nbsp;</span>";
                         
-                       // ALL   
+                    
+                        // HTML    
+                    } else if ($wdhINPUT['type'] == 'html_editor') {
+                        $value     = str_replace('m@@','',$this->wdhfield($wdhDB, $wdhFIELD));
+                        $value     = htmlspecialchars_decode($value);
+//                        $value     = str_replace('"\\','"',$value);
+//                        $value     = str_replace('\\','"',$value);
+//                        $value     = str_replace('&#x22;','',$value);
+//                        $value     = str_replace('&#x28;','(',$value);
+//                        $value     = str_replace('&#x29;',')',$value);
+                        echo "<span id='wdh-field-" . $fieldname . "-" . $wfieldvalue . "'>" . $value . "</span>";
+                        
+                        // IMAGE    
+                    } else if ($wdhINPUT['type'] == 'image') {
+                        
+                        $value  = str_replace('m@@','',$this->wdhfield($wdhDB, $wdhFIELD));
+                        $width  = $wdhUPLOAD['image_upload_width'];
+                        $height = $wdhUPLOAD['image_upload_height'];
+                        
+                        if ($value == '...............') {
+                            $width  = 138;
+                            $height = 138;
+                            $value  = 'no-photo.png';
+                        }
+                        
+                        echo "<img src='" . WP_CONTENT_URL.'/wdhsvwe/uploads/images/' . $value . "' alt='" . $wdhUPLOAD['image_upload_alt'] . "' style='width: " . $width . "px;height: " . $height . "px;' id='wdh-field-" . $fieldname . "-" . $wfieldvalue . "-image' />";
+                          
                     } else {
                         $value = str_replace('m@@','',$this->wdhfield($wdhDB, $wdhFIELD));
                         
@@ -544,6 +630,30 @@ if (!class_exists("WdhEditFieldDb")) {
                     echo 'field_exist';
                     die();
                 }
+            }
+
+            // MD5 Password
+            if ($type == 'password') {
+                $value = md5($value);
+            }
+
+            // JSON Field Value
+            if ($wdhFIELD['json_value'] != ''){
+
+                $valueOld = str_replace('m@@','',$this->wdhfield($wdhDB, $wdhFIELD, 'noJSON'));
+                $fieldJSON = $wdhFIELD['json_value'];
+                $values = json_decode($valueOld);
+                $valueNew = array();
+                foreach($values as $key => $valueMod){
+
+                    if ($key == $fieldJSON){
+                        $valueNew[$key] = $value; 
+                    } else {
+                        $valueNew[$key] = $valueMod;
+                    }
+                }
+
+                $value = json_encode($valueNew);
             }
             
             $value = 'm@@'.$value;
@@ -644,90 +754,6 @@ if (!class_exists("WdhEditFieldDb")) {
                 $wpdb->query($query);
 
                 echo 'success'; die();
-            } else if ($type == 'map') {
-                // Update field
-                $query = 'UPDATE ' . $dbTable . ' SET ' . $dbfieldName . '="' . $value . '" WHERE ' . $conditionAll;
-
-                $wpdb->query($query);
-                $this->wdhGetCoordinates($value);
-            } else if ($type == 'video') {
-
-                $video_url  = "http://" . $value;
-                $video_from = $this->wdhAutodetectVideo($video_url);
-                $video      = array();
-                $video_id   = '';
-
-                switch ($video_from) {
-                    // Youtube.com
-                    case "1":
-                        $video_id = $this->wdhYoutubeId($value);
-                        break;
-                    // Vimeo.com
-                    case "2":
-                        $video_id = $this->wdhVimeoId($value);
-                        break;
-                    case "3":
-                        // Dailymotion.com
-                        $video_id = $this->wdhDailymotionId($value);
-                        break;
-                    // Metacafe.com
-                    case "4":
-                        $video_id = $this->wdhMetacafeId($value);
-                        break;
-                    // Redtube.com
-                    case "5":
-                        $video_id = $this->wdhRedTubeId($value);
-                        break;
-                    // Xvideos.com
-                    case "6":
-                        $video_id = $this->wdhXvideosId($value);
-                        break;
-                }
-
-                if (strlen($video_id) > 0) {
-
-                    switch ($video_from) {
-                        // Youtube.com
-                        case "1":
-                            $video_title = str_replace(" ", "", $this->wdhYoutubeTitle($video_id));
-                            break;
-                        // Vimeo.com
-                        case "2":
-                            $vimeoData   = $this->wdhVimeoData($video_id);
-                            $video_title = str_replace(" ", "", $vimeoData[0]->title);
-                            break;
-                        // Dailymotion.com
-                        case "3":
-                            $video_title = $this->wdhDailymotionTitle($value);
-                            break;
-                        // Metacafe.com
-                        case "4":
-                            $video_title = $this->wdhShorter($this->wdhMetacafeTitle($video_url), 38);
-                            break;
-                        // Redtube.com
-                        case "5":
-                            $video_title = $this->wdhShorter($this->wdhRedTubeTitle($video_url), 38);
-                            break;
-                        // Xvideos.com
-                        case "6":
-                            $video_title = $this->wdhShorter($this->wdhXvideosTitle($video_url), 38);
-                            break;
-                    }
-
-                    if (strlen($video_title) > 0) {
-                        // Update field
-                        $query = 'UPDATE ' . $dbTable . ' SET ' . $dbfieldName . '="' . $value . '" WHERE ' . $conditionAll;
-
-                        $wpdb->query($query);
-                        print_r($this->wdhReturnVideo($value));
-                        die();
-                    } else {
-                        echo "wrong";
-                    }
-
-                } else {
-                    echo "wrong";
-                }
             }
             
             die();
@@ -756,297 +782,6 @@ if (!class_exists("WdhEditFieldDb")) {
             return $return_str;
         }
         
-        // VIDEO : YOUTUBE.com
-        
-        // Youtube Video ID
-        function wdhYoutubeId($url)
-        {
-            $url   = str_replace("&amp;", "&", $url);
-            $parts = parse_url($url);
-            if (isset($parts['query'])) {
-                parse_str($parts['query'], $qs);
-                if (isset($qs['v'])) {
-                    return $qs['v'];
-                } else if ($qs['vi']) {
-                    return $qs['vi'];
-                }
-            }
-            if (isset($parts['path'])) {
-                $path = explode('/', trim($parts['path'], '/'));
-                return $path[count($path) - 1];
-            }
-            return false;
-        }
-        
-        // Youtube Video Title
-        function wdhYoutubeTitle($video_id)
-        {
-            $url = "http://gdata.youtube.com/feeds/api/videos/" . $video_id;
-            $doc = new DOMDocument;
-            $doc->load($url);
-            $title = $doc->getElementsByTagName("title")->item(0)->nodeValue;
-            
-            return $this->wdhShorter($title, 38);
-        }
-        
-        function wdhReturnVideo($video_url)
-        {
-            $video_url  = "http://" . $video_url;
-            $video_from = $this->wdhAutodetectVideo($video_url);
-            $video      = array();
-            $video_id   = '';
-            
-            switch ($video_from) {
-                // Youtube.com
-                case "1":
-                    $video['id']    = $this->wdhYoutubeId($video_url);
-                    $video_id       = $video['id'];
-                    $video['title'] = $this->wdhYoutubeTitle($video_id);
-                    $video['logo']  = 'youtube';
-                    $video['image'] = 'http://img.youtube.com/vi/' . $video_id . '/0.jpg';
-                    $video['type']  = '1';
-                    break;
-                // Vimeo.com
-                case "2":
-                    $video['id']    = $this->wdhVimeoId($video_url);
-                    $video_id       = $video['id'];
-                    $videoData      = $this->wdhVimeoData($video_id);
-                    $video['title'] = $this->wdhShorter($videoData[0]->title, 38);;
-                    $video['logo']  = 'vimeo';
-                    $video['image'] = $videoData[0]->thumbnail_large;
-                    $video['type']  = '2';
-                    break;
-                // Dailymotion.com
-                case "3":
-                    $video['id']    = $this->wdhDailymotionId($video_url);
-                    $video_id       = $video['id'];
-                    $video['title'] = $this->wdhDailymotionTitle($video_url);
-                    $video['logo']  = 'dailymotion';
-                    $video['image'] = $this->wdhDailymotionImage($video_id);
-                    $video['type']  = '3';
-                    break;
-                // Metacafe.com
-                case "4":
-                    $video['id']    = $this->wdhMetacafeId($video_url);
-                    $video_id       = $video['id'];
-                    $video['title'] = $this->wdhShorter($this->wdhMetacafeTitle($video_url), 38);
-                    $video['logo']  = 'metacafe';
-                    $video['image'] = 'http://s4.mcstatic.com/thumb/' . $video_id . '/0/6/videos/0/6/' . $this->wdhMetacafeTitleUrl($video_url) . '.jpg';
-                    $video['type']  = '4';
-                    break;
-                // Redtube.com
-                case "5":
-                    $video['id']    = $this->wdhRedTubeId($video_url);
-                    $video_id       = $video['id'];
-                    $video['title'] = $this->wdhShorter($this->wdhRedTubeTitle($video_url), 38);
-                    $video['logo']  = 'redtube';
-                    $video['image'] = $this->wdhRedTubeImage($video_id);
-                    $video['type']  = '5';
-                    break;
-                // Xvideos.com
-                case "6":
-                    $video['id']    = $this->wdhXvideosId($video_url);
-                    $video_id       = $video['id'];
-                    $video['title'] = $this->wdhShorter($this->wdhXvideosTitle($video_url), 38);
-                    $video['logo']  = 'xvideos';
-                    $video['image'] = $this->wdhXvideosImage($video_url);
-                    $video['type']  = '6';
-                    break;
-            }
-            
-            if ($video_id == '') {
-                $video['id']    = '';
-                $video['title'] = '';
-                $video['logo']  = '';
-                $video['image'] = '';
-                $video['type']  = '0';
-            }
-            
-            echo json_encode($video);
-            die();
-        }
-        
-        // VIDEO : Vimeo.com
-        
-        // Vimeo Video ID
-        function wdhVimeoId($text)
-        {
-            $mod      = explode("vimeo.com/", $text);
-            $video_id = $mod[1];
-            
-            return $video_id;
-        }
-        // Vimeo Video DATA
-        function wdhVimeoData($videoID)
-        {
-            $xmlData = file_get_contents('http://vimeo.com/api/v2/video/' . $videoID . '.json');
-            
-            return json_decode($xmlData);
-        }
-        
-        // VIDEO : DailyMotion.com
-        // DailyMotion Video ID
-        function wdhDailymotionId($video_url)
-        {
-            $videomod  = explode("dailymotion.com/video/", $video_url);
-            $videomodd = explode("_", $videomod[1]);
-            $video_id  = $videomodd[0];
-            return $video_id;
-        }
-        
-        // DailyMotion Video IMAGE
-        function wdhDailymotionImage($video_id)
-        {
-            $url       = "http://www.dailymotion.com/rss/video/$video_id";
-            $xml       = simplexml_load_file($url, 'SimpleXMLElement', LIBXML_NOCDATA);
-            $thumb     = $xml->xpath("/rss/channel/item/media:thumbnail/@url");
-            $thumb_url = (string) $thumb[0]['url'];
-            return $thumb_url;
-        }
-        
-        // DailyMotion Video Title
-        function wdhDailymotionTitle($video_url)
-        {
-            $video_url = str_replace("http://", "", $video_url);
-            $video_url = "http://" . $video_url;
-            $file      = file($video_url);
-            $file      = implode("", $file);
-            
-            if (preg_match("/<title>(.+)<\/title>/i", $file, $m)) {
-                $title = $m[1];
-            }
-            return $this->wdhShorter($title, 38);
-        }
-        
-        // VIDEO : Metacafe.com
-        // Metacafe Video ID
-        function wdhMetacafeId($video_url)
-        {
-            $videomod  = explode("metacafe.com/watch/", $video_url);
-            $videomodd = explode("/", $videomod[1]);
-            $video_id  = $videomodd[0];
-            
-            return $video_id;
-        }
-        
-        // Metacafe Video Data
-        function wdhMetacafeData($video_id)
-        {
-            $buffer = file_get_contents("http://www.metacafe.com/api/item/$video_id");
-            $xml    = new SimpleXMLElement($buffer);
-            
-            return array(
-                'title' => current($xml->xpath('/rss/channel/item/title')),
-                //'description' => strip_tags(current($xml->xpath('/rss/channel/item/description'))),
-                'thumbnail' => current($xml->xpath('/rss/channel/item/media:thumbnail/@url')),
-                'embedurl' => current($xml->xpath('/rss/channel/item/media:content/@url'))
-            );
-        }
-        
-        // Metacafe Video Title
-        function wdhMetacafeTitle($video_url)
-        {
-            $video_url = str_replace("http://", "", $video_url);
-            $video_url = "http://" . $video_url;
-            $file      = file($video_url);
-            $file      = implode("", $file);
-            
-            if (preg_match("/<title>(.+)<\/title>/i", $file, $m)) {
-                $title = $m[1];
-            }
-            return $this->wdhShorter($title, 38);
-        }
-        
-        // Metacafe Video Title Url
-        function wdhMetacafeTitleUrl($video_url)
-        {
-            $video_urlData = explode('/', strrev($video_url));
-            $videoUrl      = str_replace('/', '', strrev($video_urlData[1]));
-            return $videoUrl;
-        }
-        
-        // VIDEO : Redtube.com
-        // Redtube Video ID
-        function wdhRedTubeId($text)
-        {
-            $mod      = explode("redtube.com/", $text);
-            $video_id = $mod[1];
-            return $video_id;
-        }
-        
-        // Redtube Video Title
-        function wdhRedTubeTitle($video_url)
-        {
-            $video_url = str_replace("http://", "", $video_url);
-            $video_url = "http://" . $video_url;
-            $file      = file($video_url);
-            $file      = implode("", $file);
-            
-            if (preg_match("/<title>(.+)<\/title>/i", $file, $m)) {
-                $mod   = $m[1];
-                $modd  = explode(" | Redtube", $mod);
-                $title = $modd[0];
-            } else {
-                $title = "Redtube";
-            }
-            
-            return $title;
-        }
-        
-        // Redtube Video Image
-        function wdhRedTubeImage($videoid)
-        {
-            $video_url = "http://api.redtube.com/?data=redtube.Videos.getVideoById&video_id=$videoid&output=xml&thumbsize=big";
-            $file      = file($video_url);
-            $file      = implode("", $file);
-            $mod       = explode('<thumbs><thumb size="big" width="432" height="324">', $file);
-            $modd      = explode("</thumb>", $mod[1]);
-            $moddd     = explode("$videoid" . "_", $modd[0]);
-            $img       = "$moddd[0]" . "$videoid" . "_003b.jpg";
-            return $img;
-        }
-        
-        // VIDEO : Xvideos.com
-        // Xvideos Video ID
-        function wdhXvideosId($text)
-        {
-            $mod      = explode("/video", $text);
-            $modd     = explode("/", $mod[1]);
-            $video_id = $modd[0];
-            
-            return $video_id;
-        }
-        
-        // Xvideos Video IMAGE
-        function wdhXvideosImage($video_url)
-        {
-            $video_url = str_replace("http://", "", $video_url);
-            $video_url = "http://" . $video_url;
-            $file      = file($video_url);
-            $file      = implode("", $file);
-            $mod       = explode("url_bigthumb=", $file);
-            $modd      = explode("&amp;", $mod[1]);
-            $img       = $modd[0];
-            return $img;
-        }
-        
-        // Xvideos Video Title
-        function wdhXvideosTitle($video_url)
-        {
-            $video_url = str_replace("http://", "", $video_url);
-            $video_url = "http://" . $video_url;
-            $file      = file($video_url);
-            $file      = implode("", $file);
-            
-            if (preg_match("/<title>(.+)<\/title>/i", $file, $m)) {
-                $mod   = $m[1];
-                $modd  = explode("- XVIDEOS.COM", $mod);
-                $title = $modd[0];
-            } else {
-                $title = "Xvideos";
-            }
-            return $title;
-        }
         
         function wdhShorter($text, $chars_limit)
         {
@@ -1341,81 +1076,6 @@ if (!class_exists("WdhEditFieldDb")) {
             return $content;
         }
         
-        function wdhGetVideoData(){
-            $video_url = sanitize_text_field($_POST['value']);
-            $video_from = $this->wdhAutodetectVideo($video_url);
-            $video_id   = '';
-
-            switch ($video_from) {
-                // Youtube.com
-                case "1":
-                    $video_id     = $this->wdhYoutubeId($video_url);
-                    $video_title  = $this->wdhYoutubeTitle($video_id);
-                    $video_logo   = 'youtube';
-                    $video_img    = 'http://img.youtube.com/vi/' . $video_id . '/0.jpg';
-                    $video_type   = '1';
-                    break;
-                // Vimeo.com
-                case "2":
-                    $video_id    = $this->wdhVimeoId($video_url);
-                    $videoData   = $this->wdhVimeoData($video_id);
-                    $video_title = $this->wdhShorter($videoData[0]->title, 38);;
-                    $video_logo   = 'vimeo';
-                    $video_img    = $videoData[0]->thumbnail_large;
-                    $video_type   = '2';
-                    break;
-                // Dailymotion.com
-                case "3":
-                    $video_id     = $this->wdhDailymotionId($video_url);
-                    $video_title  = $this->wdhDailymotionTitle($video_url);
-                    $video_logo   = 'dailymotion';
-                    $video_img    = $this->wdhDailymotionImage($video_id);
-                    $video_type   = '3';
-                    break;
-                // Metacafe.com
-                case "4":
-                    $video_id     = $this->wdhMetacafeId($video_url);
-                    $video_title  = $this->wdhShorter($this->wdhMetacafeTitle($video_url), 38);
-                    $video_logo   = 'metacafe';
-                    $video_img    = 'http://s4.mcstatic.com/thumb/' . $video_id . '/0/6/videos/0/6/' . $this->wdhMetacafeTitleUrl($video_url) . '.jpg';
-                    $video_type   = '4';
-                    break;
-                // Redtube.com
-                case "5":
-                    $video_id     = $this->wdhRedTubeId($video_url);
-                    $video_title  = $this->wdhShorter($this->wdhRedTubeTitle($video_url), 38);
-                    $video_logo   = 'redtube';
-                    $video_img    = $this->wdhRedTubeImage($video_id);
-                    $video_type   = '5';
-                    break;
-                // Xvideos.com
-                case "6":
-                    $video_id     = $this->wdhXvideosId($video_url);
-                    $video_title  = $this->wdhShorter($this->wdhXvideosTitle($video_url), 38);
-                    $video_logo   = 'xvideos';
-                    $video_img    = $this->wdhXvideosImage($video_url);
-                    $video_type   = '6';
-                    break;
-            }
-            
-            $video = array();
-            $video['id']    = $video_id;
-            $video['title'] = $video_title;
-            $video['logo']  = $video_logo;
-            $video['image'] = $video_img;
-            $video['type']  = $video_type;
-            
-            echo json_encode($video);
-            die();
-        }
-        
-        function wdhGetMapData(){
-            
-            if (isset($_POST['value'])) {
-                $value = sanitize_text_field($_POST['value']);
-                $this->wdhGetCoordinates($value);
-            }
-        }
         
         function mysqliCheck(){
             $mysqli = false;

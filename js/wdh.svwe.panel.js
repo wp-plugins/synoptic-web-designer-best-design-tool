@@ -20,8 +20,13 @@ $jWDH.fn.extend({
         var id = $jWDH(this)['selector'],
             defaultOptions = {'normaltext': window.TXT_PM_NORMAL,
                               'hovertext': window.TXT_PM_HOVER,
-                              'textSettings': window.TXT_PM_TEXT_SETTINGS,
-                              'boxSettings': window.TXT_PM_BOX_SETTINGS,
+                              'textSettings': {'text':window.TXT_PM_TEXT_SETTINGS,
+                                               'icon':window.ICON_PM_TEXT_SETTINGS,
+                                               'id':'wdh-svwe-panel-group-text'},
+                              'boxSettings': {'text':window.TXT_PM_BOX_SETTINGS,
+                                              'icon':window.ICON_PM_BOX_SETTINGS,
+                                              'id':'wdh-svwe-panel-group-box'},
+                              'extraSettings': window.WDH_SVWE_EXTRA_GROUPS,
                               'label1': 'Option 1',
                               'label2': 'Option 2',
                               'advancedsettings': 'Advanced Settings',
@@ -97,11 +102,9 @@ $jWDH.fn.extend({
                     $jWDH('.wdh-elemnt-type').removeClass('element-type-selected'); 
                     $jWDH(this).addClass('element-type-selected');
                     
-                    if($jWDH(this).hasClass('wdh-elemnt-subtype-text') === true) {
-                        $jWDH('#wdh-panel-subtype-settings').val('text');
-                    } else {
-                        $jWDH('#wdh-panel-subtype-settings').val('box');
-                    }
+                    var group = $jWDH(this).attr('id').split('wdh-svwe-panel-group-')[1];
+                    
+                    $jWDH('#wdh-panel-subtype-settings').val(group);
                     panel.openSection($jWDH('#wdh-panel-category-settings').val(), $jWDH('#wdh-panel-type-settings').val(), $jWDH('#wdh-panel-subtype-settings').val());
                 });
                 
@@ -632,17 +635,23 @@ $jWDH.fn.extend({
             },
                     
             generate:function(){
-                var contentHTML = new Array();
-                
+                var contentHTML = new Array(),
+                    extraSettings = window.WDH_SVWE_EXTRA_GROUPS;
                 
                 contentHTML.push('          <div class="wdh-search-properties wdh-svwe-exclude">');
                 contentHTML.push('              <input type="text" class="wdh-search-input wdh-svwe-exclude" id="wdh-search-input-id" value="" placeholder="'+window.TXT_PM_TYPE_PROPERTY+'">');
                 contentHTML.push('          </div>');
-                contentHTML.push('         <div class="wdh-types wdh-svwe-exclude">');
-                contentHTML.push('              <span class="wdh-elemnt-type wdh-elemnt-subtype-text element-type-selected wdh-svwe-exclude">'+defaultOptions['textSettings']+'</span>');
-                contentHTML.push('              <span class="wdh-elemnt-type wdh-svwe-exclude">|</span>');
-                contentHTML.push('              <span class="wdh-elemnt-type wdh-svwe-exclude">'+defaultOptions['boxSettings']+'</span>');
-                contentHTML.push('          </div>');
+                contentHTML.push('         <ul class="wdh-types wdh-svwe-exclude">');
+                contentHTML.push('              <li id="'+defaultOptions['textSettings']['id']+'" class="'+defaultOptions['textSettings']['icon']+' wdh-elemnt-type wdh-svwe-exclude element-type-selected"><span class="wdh-svwe-exclude">'+defaultOptions['textSettings']['text']+'</span></li>');
+                contentHTML.push('              <li id="'+defaultOptions['boxSettings']['id']+'" class="'+defaultOptions['boxSettings']['icon']+' wdh-elemnt-type wdh-svwe-exclude"><span class="wdh-svwe-exclude">'+defaultOptions['boxSettings']['text']+'</span></li>');
+                
+                if (extraSettings !== '') {
+                    for (var key in extraSettings) {
+                        contentHTML.push('              <li id="'+extraSettings[key]['id']+'" class="'+extraSettings[key]['icon']+' wdh-elemnt-type wdh-svwe-exclude"><span class="wdh-svwe-exclude">'+extraSettings[key]['text']+'</span></li>');
+                    }
+                }
+                
+                contentHTML.push('          </ul>');
                 
                 return contentHTML.join('');
                  
