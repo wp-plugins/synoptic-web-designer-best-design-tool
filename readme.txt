@@ -16,16 +16,15 @@ Synoptic Web Designer: best WordPress design tool is a plugin which helps you mo
 
 How to change your website design with Synoptic Web Designer ?
 
-[Click here](https://www.youtube.com/watch?v=qhlzdYtO8Rg&list=PLTJUAcxqeddsf5PDfERiYpgBopurWN0zm)  to see how to do it in our short video.
+[youtube https://www.youtube.com/watch?v=qhlzdYtO8Rg&list=PLTJUAcxqeddsf5PDfERiYpgBopurWN0zm]
 
 How to change your wordpress dashboard design with Synoptic Web Designer ?
 
-[Click here](https://www.youtube.com/watch?v=UsejhWZ6KD8&index=2&list=PLTJUAcxqeddsf5PDfERiYpgBopurWN0zm) to see how to do it in our short video.
+[youtube https://www.youtube.com/watch?v=UsejhWZ6KD8&index=2&list=PLTJUAcxqeddsf5PDfERiYpgBopurWN0zm]
 
 How to change your Woocommerce pages design with Synoptic Web Designer ?
 
-[Click here](https://www.youtube.com/watch?v=jfKdBVXlZIs&list=PLTJUAcxqeddsf5PDfERiYpgBopurWN0zm&index=3) to see how in our short video.
-
+[youtube https://www.youtube.com/watch?v=jfKdBVXlZIs&list=PLTJUAcxqeddsf5PDfERiYpgBopurWN0zm&index=3]
 
 
 If need support or a new feature just go on [support](http://wordpress.org/support/plugin/synoptic-web-designer-best-design-tool) and write us.
