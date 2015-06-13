@@ -490,12 +490,14 @@ if (!class_exists("wdhSVWE")) {
                 }
                 
                 // Languages && JS Settings
-                if (strpos($key,'TXT_') !== false || strpos($key,'BOX_') !== false || strpos($key,'WDH_DEFAULT_') !== false || strpos($key,'ICON_') !== false || strpos($key,'WDH_SVWE_EXTRA_GROUPS') !== false) {
+                if (strpos($key,'TXT_') !== false || strpos($key,'BOX_') !== false || strpos($key,'WDH_DEFAULT_') !== false || strpos($key,'ICON_') !== false || strpos($key,'WDH_SVWE_EXTRA_GROUPS') !== false || strpos($key,'WDH_SVWE_EXTRA_FIELDS') !== false) {
                     if (strpos($key,'WDH_SVWE_EXTRA_GROUPS') !== false) {
                         
                         if ($value != '') {
                             array_push ($languageHTML, 'window.'.$key.' = '.$value.';');
                         }
+                    } else if(strpos($key,'WDH_SVWE_EXTRA_FIELDS') !== false) {
+                        array_push ($languageHTML, 'window.'.$key.' = '.json_encode($value).';');
                     } else {
                         array_push ($languageHTML, 'window.'.$key.' = "'.$value.'";');
                     }
@@ -1139,6 +1141,32 @@ if (!class_exists("wdhSVWE")) {
             $wdhPageOn          = $wdhSVWE['page_on'];
             $wdhSVWE['role']    = sanitize_text_field($_POST['wdhRole']);
             $wdhRole            = $wdhSVWE['role'];
+            $extraFieldsDB      = '';
+            
+            $extraGroups = (object)json_decode(str_replace("'",'"',$wdhSVWE['WDH_SVWE_EXTRA_GROUPS']));
+            $extraFields = $wdhSVWE['WDH_SVWE_EXTRA_FIELDS'];
+
+            if (!empty($extraGroups)) {
+                $ext = 0;
+
+                foreach($extraGroups as $key => $value){
+                    $groupName = $extraGroups->{$key}->name;
+
+                    if (!empty($extraFields)) {
+                        $extraFieldSelected = $extraFields[$groupName];
+
+                        if (!empty($extraFieldSelected)) {
+                            
+                            foreach($extraFieldSelected as $subkey => $subvalue){
+                                
+                                $extraFieldsDB .= ','.$extraFieldSelected[$subkey]['name'];
+                            }
+                        }
+                    }
+
+                    $ext++;
+                }
+            }
             
             if(isset($_POST['wdhAllCSS'])) {
                 $wdhAllCSS          = sanitize_text_field(json_encode($_POST['wdhAllCSS']));
@@ -1339,13 +1367,38 @@ if (!class_exists("wdhSVWE")) {
                     $fieldsAll .= "box_min_height='m@@".$wdhAllCSS->MinHeight."',";
                     $fieldsAll .= "box_max_height='m@@".$wdhAllCSS->MaxHeight."',";
                     $fieldsAll .= "box_list_style_type='m@@".$wdhAllCSS->ListStyleType."',";
+                    
+                    $extraGroups = (object)json_decode(str_replace("'",'"',$wdhSVWE['WDH_SVWE_EXTRA_GROUPS']));
+                    $extraFields = $wdhSVWE['WDH_SVWE_EXTRA_FIELDS'];
+
+                    if (!empty($extraGroups)) {
+                        $ext = 0;
+
+                        foreach($extraGroups as $key => $value){
+                            $groupName = $extraGroups->{$key}->name;
+
+                            if (!empty($extraFields)) {
+                                $extraFieldSelected = $extraFields[$groupName];
+
+                                if (!empty($extraFieldSelected)) {
+
+                                    foreach($extraFieldSelected as $subkey => $subvalue){
+                    
+                                        $fieldsAll .= $extraFieldSelected[$subkey]['name']."='m@@".$wdhAllCSS->{$extraFieldSelected[$subkey]['css']}."',";
+                                    }
+                                }
+                            }
+
+                            $ext++;
+                        }
+                    }
                     $fieldsAll .= "box_list_style_position='m@@".$wdhAllCSS->ListStylePosition."'";
 
                     // UPDATE
                     $updateElement = "UPDATE `".WDHSVWE_Temporary_CSS_table."` SET ".$fieldsAll." ".$checkCondition;
                     $wpdb->query($updateElement);
                 } else {
-                    $fieldsAll .= "(wid,container_full_path,container_wdh_path,container_classes,container_id,element_tag,element_position,resolution,page_url,page_on,role,text_color,text_font_size,text_font_family,text_font_weight,text_font_style,text_font_variant,text_font_line_height,text_font_align,text_font_decoration,text_font_transform,text_font_letter_spacing,text_font_word_spacing,text_font_vertical_align,text_font_white_space,box_background_color,box_width,box_height,box_background_image,box_background_size,box_background_position_x,box_background_position_y,box_background_repeat,box_padding_top,box_padding_bottom,box_padding_left,box_padding_right,box_margin_top,box_margin_bottom,box_margin_left,box_margin_right,box_border,box_border_color,box_border_radius,box_outline,box_outline_color,box_position,box_top,box_bottom,box_left,box_right,box_overflow,box_z_index,box_float,box_clear,box_display,box_visibility,box_border_collapse,box_caption_side,box_content,box_page_break_before,box_page_break_after,box_page_break_inside,box_orfans,box_windows,box_cursor,box_direction,box_border_top,box_border_bottom,box_border_left,box_border_right,box_border_top_color,box_border_bottom_color,box_border_left_color,box_border_right_color,box_border_top_left_radius,box_border_bottom_left_radius,box_border_top_right_radius,box_border_bottom_right_radius,box_min_width,box_max_width,box_min_height,box_max_height,box_list_style_type,box_list_style_position) VALUES(";
+                    $fieldsAll .= "(wid,container_full_path,container_wdh_path,container_classes,container_id,element_tag,element_position,resolution,page_url,page_on,role,text_color,text_font_size,text_font_family,text_font_weight,text_font_style,text_font_variant,text_font_line_height,text_font_align,text_font_decoration,text_font_transform,text_font_letter_spacing,text_font_word_spacing,text_font_vertical_align,text_font_white_space,box_background_color,box_width,box_height,box_background_image,box_background_size,box_background_position_x,box_background_position_y,box_background_repeat,box_padding_top,box_padding_bottom,box_padding_left,box_padding_right,box_margin_top,box_margin_bottom,box_margin_left,box_margin_right,box_border,box_border_color,box_border_radius,box_outline,box_outline_color,box_position,box_top,box_bottom,box_left,box_right,box_overflow,box_z_index,box_float,box_clear,box_display,box_visibility,box_border_collapse,box_caption_side,box_content,box_page_break_before,box_page_break_after,box_page_break_inside,box_orfans,box_windows,box_cursor,box_direction,box_border_top,box_border_bottom,box_border_left,box_border_right,box_border_top_color,box_border_bottom_color,box_border_left_color,box_border_right_color,box_border_top_left_radius,box_border_bottom_left_radius,box_border_top_right_radius,box_border_bottom_right_radius,box_min_width,box_max_width,box_min_height,box_max_height,box_list_style_type".$extraFieldsDB.",box_list_style_position) VALUES(";
                     $fieldsAll .= "'".$wid."','".$domPath."','".$wdhPath."','".$wdhClass."','".$wdhID."','".$elementTag."','".$elementPosition."','".$resolution."','".$wdhPageUrl."','".$wdhPageOn."','".$wdhRole."',";
                     $fieldsAll .= "'m@@".$color."',";
                     $fieldsAll .= "'m@@".$wdhAllCSS->fontSize."',";
@@ -1420,6 +1473,32 @@ if (!class_exists("wdhSVWE")) {
                     $fieldsAll .= "'m@@".$wdhAllCSS->MinHeight."',";
                     $fieldsAll .= "'m@@".$wdhAllCSS->MaxHeight."',";
                     $fieldsAll .= "'m@@".$wdhAllCSS->ListStyleType."',";
+                    
+                    $extraGroups = (object)json_decode(str_replace("'",'"',$wdhSVWE['WDH_SVWE_EXTRA_GROUPS']));
+                    $extraFields = $wdhSVWE['WDH_SVWE_EXTRA_FIELDS'];
+
+                    if (!empty($extraGroups)) {
+                        $ext = 0;
+
+                        foreach($extraGroups as $key => $value){
+                            $groupName = $extraGroups->{$key}->name;
+
+                            if (!empty($extraFields)) {
+                                $extraFieldSelected = $extraFields[$groupName];
+
+                                if (!empty($extraFieldSelected)) {
+
+                                    foreach($extraFieldSelected as $subkey => $subvalue){
+                    
+                                        $fieldsAll .= "'m@@".$wdhAllCSS->{$extraFieldSelected[$subkey]['css']}."',";
+                                    }
+                                }
+                            }
+
+                            $ext++;
+                        }
+                    }
+                    
                     $fieldsAll .= "'m@@".$wdhAllCSS->ListStylePosition."')";
 
                     // INSERT

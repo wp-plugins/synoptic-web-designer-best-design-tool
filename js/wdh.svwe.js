@@ -2635,6 +2635,28 @@ function css(element) {
         'ListStyleImage': element.css('list-style-image')
      };
      
+     var extraFields = window.WDH_SVWE_EXTRA_FIELDS;
+     
+     if (extraFields !== '' && extraFields !== '{}') {
+        for (var key in extraFields) {
+            var extraFieldsAll = extraFields[key];
+            
+            for (var subkey in extraFieldsAll) {
+                
+                if (extraFieldsAll[subkey]['css'] === 'animation-duration') {
+                    
+                    if (element.css(extraFieldsAll[subkey]['css']) === '0s') {
+                        o[extraFieldsAll[subkey]['css']] = '1s';
+                    } else {
+                        o[extraFieldsAll[subkey]['css']] = element.css(extraFieldsAll[subkey]['css']);
+                    }
+                } else {
+                    o[extraFieldsAll[subkey]['css']] = element.css(extraFieldsAll[subkey]['css']);
+                }
+            }
+        }
+    }
+     
     return o;
 }
 
@@ -2731,6 +2753,18 @@ function cssPaste(element,elementTo) {
     $jWDH(elementTo).css('list-style-type', element.css('list-style-type'));
     $jWDH(elementTo).css('list-style-position', element.css('list-style-position'));
     $jWDH(elementTo).css('list-style-image', element.css('list-style-image'));
+    
+     var extraFields = window.WDH_SVWE_EXTRA_FIELDS;
+     
+     if (extraFields !== '' && extraFields !== '{}') {
+        for (var key in extraFields) {
+            var extraFieldsAll = extraFields[key];
+            
+            for (var subkey in extraFieldsAll) {
+                $jWDH(elementTo).css(extraFieldsAll[subkey]['css'], element.css(extraFieldsAll[subkey]['css']));
+            }
+        }
+    }
 }
 
 function wdhPasteDesign(sendData){
