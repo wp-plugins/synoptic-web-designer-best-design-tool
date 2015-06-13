@@ -1516,6 +1516,10 @@ $jWDH.fn.extend({
                     $jWDH('.wdh-settings-hover-advanced-text').remove();
                     $jWDH('.wdh-settings-normal-advanced-box').remove();
                     $jWDH('.wdh-settings-hover-advanced-box').remove();
+                    $jWDH('.wdh-settings-hover-general-animator').remove();
+                    $jWDH('.wdh-settings-normal-general-animator').remove();
+                    
+                    
                     
                     window.elementSelectNowIs = window.wdhSVWESelectedElementJS;
                     

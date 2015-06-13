@@ -14,6 +14,10 @@ Synoptic Web Designer: best WordPress design tool is a plugin which helps you mo
 
 Synoptic Web Designer: best WordPress design tool is a plugin which helps you modify the design ,the aspect of your site or your gallery and in this wordpress version you can modify the wordpress dashboard in just a few minuts without any technological knowledge necessary for you to know (no code )
 
+**Extensions:** 
+
+* [Synoptic Visual Animator: create amazing animations](https://wordpress.org/plugins/synoptic-visual-animator-create-amazing-animations/) helps you to create amazing animations for your website, admin/user dashboard, blog, forms, woocommerce pages, events calendars, galleries, bbPress pages and others in just few seconds and transform a static website in a dinamic website
+
 How to change your website design with Synoptic Web Designer ?
 
 [youtube https://www.youtube.com/watch?v=qhlzdYtO8Rg&list=PLTJUAcxqeddsf5PDfERiYpgBopurWN0zm]

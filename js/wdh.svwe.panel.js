@@ -468,6 +468,10 @@ $jWDH.fn.extend({
                         window.elementSelectNowIs = elementTag;
                     }
                     
+                    if($jWDH(window.elementSelectNowIs).css('animation-duration') === '0s') {
+                        $jWDH(window.elementSelectNowIs).css('animation-duration','1s');
+                    }
+                    
                     defaultOptions['wdhPath']           = wdhPath;
                     defaultOptions['domPath']           = domPath;
                     defaultOptions['wdhID']             = wdhID;
@@ -504,6 +508,8 @@ $jWDH.fn.extend({
                 $jWDH('.wdh-settings-hover-advanced-text').remove();
                 $jWDH('.wdh-settings-hover-general-box').remove();
                 $jWDH('.wdh-settings-hover-advanced-box').remove();
+                $jWDH('.wdh-settings-hover-general-animator').remove();
+                $jWDH('.wdh-settings-normal-general-animator').remove();
                 
                 
                 $jWDH.post(ajaxurl,{action: 'wdh_svwe_display_panel',

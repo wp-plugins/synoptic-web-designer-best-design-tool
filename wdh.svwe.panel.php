@@ -54,8 +54,20 @@ if (!class_exists("wdhSVWE_Panel")) {
             $wdhPath            = sanitize_text_field($_POST['wdhPath']);
             $domPath            = sanitize_text_field($_POST['domPath']);
             $wdhID              = sanitize_text_field($_POST['wdhID']);
-            $wdhAllCSS          = sanitize_text_field(json_encode($_POST['wdhAllCSS']));
-            $wdhAllCSS          = (object)json_decode($wdhAllCSS);
+            
+            if(isset($_POST['wdhAllCSS'])) {
+                
+                if($_POST['wdhAllCSS'] != '') {
+                    $wdhAllCSS          = sanitize_text_field(json_encode($_POST['wdhAllCSS']));
+                    $wdhAllCSS          = (object)json_decode($wdhAllCSS);
+                } else {
+                    $wdhAllCSS      = array();
+                    $wdhAllCSS      = (object)$wdhAllCSS;
+                }
+            } else {
+                $wdhAllCSS      = array();
+                $wdhAllCSS      = (object)$wdhAllCSS;
+            }
             $elementTag         = sanitize_text_field($_POST['elementTag']);
             $elementPosition    = sanitize_text_field($_POST['elementPosition']);
             $wdhClass           = sanitize_text_field($_POST['wdhClass']);
