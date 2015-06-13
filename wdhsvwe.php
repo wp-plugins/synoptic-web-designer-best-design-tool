@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Synoptic Web Designer: best WordPress design tool
-Version: 1.1
+Version: 1.11
 Plugin URI: http://www.wdh.im/projects/synoptic-web-designer-best-wordpress-design-tool/
 Description: Synoptic Web Designer: best WordPress design tool helps you to edit/change the design of your website, admin/user dashboard, forms, woocommerce pages, events calendars, galleries, bbPress pages and others in just a few minutes (no coding needed).
 Author: Web Developers House
